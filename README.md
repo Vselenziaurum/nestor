@@ -6,8 +6,9 @@ card plays Skif's gut feeling: short warnings with a direction, a chat on F4,
 memory between sessions.
 
 The game-side part of the mod (a Blueprint world subsystem built with the
-official Zone Kit) ships as cooked `.pak/.ucas/.utoc` files together with this
-program on Nexus Mods: https://www.nexusmods.com/stalker2heartofchornobyl/mods/2929
+official Zone Kit) ships as cooked `.pak/.ucas/.utoc` files on Nexus Mods, as a
+separate file next to this program (since 0.2.0: "NESTOR mod" and "NESTOR
+program"): https://www.nexusmods.com/stalker2heartofchornobyl/mods/2929
 
 Исходный код nestor.exe, лаунчера мода NESTOR для S.T.A.L.K.E.R. 2. Сборка ниже, раздел Build.
 
@@ -34,9 +35,12 @@ program on Nexus Mods: https://www.nexusmods.com/stalker2heartofchornobyl/mods/2
   chat window (`askbox.py`).
 - **Console commands** go to the game only on the player's direct request in
   the chat, from a fixed list in `actions.py`: give items, ammo or coupons;
-  weather and time of day; start or stop an emission; spawn creatures or psy
-  phantoms; repair the gun in hand; make people around friendly or hostile;
-  sleep; move forward.
+  heal (effects of consumables); weather and time of day; slow time for a few
+  seconds; run faster for a minute; start or stop an emission; spawn creatures,
+  psy phantoms or loners as backup; repair the gun in hand; make people around
+  friendly or hostile; sleep; move forward; a psy strike on a creature the player
+  names (knock down, wound, scare off, turn two on each other, raise a fresh body
+  as a friendly zombie), by the creature number the mod reports.
 - **Everything stays in its own folder:** `engine\`, `models\`, `memory\`
   (plain-text memory of the conversations), `nestor.json` (settings),
   `nestor.log`.

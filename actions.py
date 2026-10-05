@@ -20,6 +20,7 @@ import json
 import math
 import os
 import re
+import time
 
 import lang as L
 
@@ -84,7 +85,8 @@ FACTION_NAMES = {"Bandit": ("бандит", "bandit"), "Duty": ("долгове�
                  "Scientists": ("учёный", "scientist"), "Corpus": ("боец Корпуса", "Corpus soldier"),
                  "Digger": ("копатель", "digger")}
 
-LIMITS = {"дать": 50, "патроны": 300, "деньги": 1000000, "существо": 6, "призрак": 6, "вперёд": 100}
+LIMITS = {"дать": 50, "патроны": 300, "деньги": 1000000, "существо": 6, "призрак": 6, "вперёд": 100,
+          "подмога": 3}
 
 # «лучшие/военные аптечки» = армейские (автор 05.10.2026 07:19: «лучшие это военные, а
 # ты дал обычные»); английский: Army Medkit, Scientific Medkit
@@ -274,7 +276,41 @@ ACTIONS = {
     # «тайники» убраны 05.10.2026: после XRegenerateItemsInStashes тайник у Скифа остался
     # пустым (автор, дважды), а чутьё говорило «Тайники полны»
     "вперёд": "перенести Скифа вперёд по взгляду, n метров",
+    # 0.2 (автор 05.10.2026: «всё хочу попробовать»; пробы Х-30, Х-31)
+    "лечение": "вылечить Скифа сразу, без аптечки: what здоровье, кровь, радиация, голод, сон, силы или «всё»",
+    "замедление": "замедлить время на несколько секунд: обострённое чутьё в бою",
+    "скорость": "Скиф бегает быстрее одну минуту",
+    "пси": "пси-удар по существу из списка «рядом»: what сбить, ранить, напугать (всех вокруг), стравить (его с "
+           "соседом), поднять (труп в зомби); n номер существа (№), у «поднять» номер трупа",
+    "подмога": "позвать сталкеров-одиночек на помощь Скифу, n сколько (до 3)",
 }
+
+# лечение эффектами расходников (Х-31): слова, эффект, что вышло по-русски и по-английски;
+# здоровье последним: оно и по умолчанию
+HEAL = [(r"кров|бинт|bleed|bandage", "BandageBleeding4", "кровь остановлена", "bleeding stopped"),
+        (r"радиац|антирад|\brad", "Antirad4", "радиация выведена", "radiation flushed"),
+        (r"голод|ед[аы]\b|сыт|накорм|поесть|жрат|hunger|food|\beat\b|fed\b", "FreshBreadSatiety3", "сытость",
+         "fed"),
+        (r"сон|сонлив|бодр|устал|sleep|tired|awake", "EnergeticSleepiness", "бодрость", "wide awake"),
+        (r"выносл|\bсил|дыхан|stamina|breath|energy", "EnergeticStamina", "силы", "stamina"),
+        (r"здоров|леч|ран[аыу]|ранен|health|heal|wound|\bhp\b", "MedkitHealing3", "здоровье", "health")]
+SPEED_X = 1.5               # Х-31: 1.6 автор назвал «быстрее»; 1.5 мягче
+SPEED_S = 60.0
+# Действия с отложенным обратным шагом: (через сколько секунд, команда). Замедление
+# держит свой мод (Х-30: мод в замедлении читает команды раз в ~6 с реального), так что
+# «0» через 3 с дойдёт через 6-9 с.
+FOLLOW = {"замедление": (3.0, "XSetXRayMode 0"), "скорость": (SPEED_S, "XSetPlayerSpeedMultiplier 1.0")}
+
+# пси-удар: вид по словам, откат и цена (Х-31: +10 пси, спадает за 10 с)
+PSY_KINDS = [("поднять", r"подн|воскрес|ожив|зомби|raise|resurrect|zombie|undead"),
+             ("стравить", r"страв|натрав|друг\s+на\s+друга|против|turn|against|each\s+other|set\s+them"),
+             ("напугать", r"напуг|пугн|отпуг|прогон|отгон|scare|frighten|drive|chase"),
+             ("ранить", r"ран|wound|cripple"),
+             ("сбить", r"сб[ие]|повал|толкн|удар|knock|push|down|hit|strike")]
+PSY_COOLDOWN = 20.0
+PSY_COST = "XApplyEffectOnPlayer PSYAdd5PointsInsta"
+_PSY_T = [0.0]
+HELP_SID = "GeneralNPC_Neutral_Stormtrooper"
 
 
 def schema(catalog):
@@ -308,7 +344,15 @@ GUARDS = {"сон": r"спат|сон\b|сна\b|поспа|усн|отдох|в
           "время": r"ноч|утр|день|днём|вечер|рассвет|закат|полдн|полноч|сумерк|время|\d{1,2}\s*[:.ч]|night|morning|"
                    r"\bday\b|evening|dawn|dusk|sunset|sunrise|noon|midnight|\btime\b|o'?clock|\d\s*(am|pm)\b",
           "погода": r"погод|дожд|гроз|туман|ясн|солн|облач|пасмурн|шторм|бур|ветр|морос|ливен|ливн|weather|rain|storm|"
-                    r"thunder|fog|mist|clear|\bsun|cloud|drizzle|wind|overcast|downpour"}
+                    r"thunder|fog|mist|clear|\bsun|cloud|drizzle|wind|overcast|downpour",
+          # 0.2: руки на людей, время и тело только по прямому слову Скифа
+          "пси": r"сб[ие]|повал|толкн|удар|ран[иья]|напуг|пугн|отпуг|прогон|отгон|страв|натрав|подн|воскрес|ожив|"
+                 r"зомби|knock|push|hit|strike|wound|scare|frighten|drive|chase|turn|against|raise|resurrect|zombie",
+          "замедление": r"замедл|медлен|останов\w*\s+врем|время\s+стоп|слоу|slow|bullet\s*time|freeze\s+time",
+          "скорость": r"быстр|скорост|ускор|бега|faster|speed|haste|quick",
+          "подмога": r"подмог|помощ|помоги|подкреп|союзник|своих|отряд|backup|reinforc|help|allies|squad|buddies",
+          "лечение": r"леч|здоров|кров|бинт|радиац|антирад|голод|ед[аы]\b|сыт|накорм|бодр|устал|сонлив|\bсил|выносл|"
+                     r"heal|health|bleed|bandage|\brad|hunger|food|\beat\b|tired|sleepy|stamina|energy|patch"}
 
 NUMBERS = {"один": 1, "одного": 1, "одну": 1, "одна": 1, "пару": 2, "два": 2, "две": 2, "двух": 2, "три": 3, "трёх": 3,
            "трех": 3, "четыре": 4, "четырёх": 4, "пять": 5, "пяти": 5, "шесть": 6, "семь": 7, "восемь": 8,
@@ -367,17 +411,17 @@ def strip_request(q):
     return w.strip(" ,.!?")
 
 
-def spawn_points(st, count, dist_cm=2200.0):
-    """Дуга перед Скифом (как spawnSuckerBatch в QuestBeacons): лицом к нему."""
+def spawn_points(st, count, dist_cm=2200.0, turn=0.0):
+    """Дуга перед Скифом (как spawnSuckerBatch в QuestBeacons): лицом к нему; turn 180 за спиной."""
     pos, yaw = st.get("pos_cm"), st.get("yaw")
     if pos is None or yaw is None:
         return []
     out = []
     for i in range(count):
         spread = (-40 + 80 * i / (count - 1)) if count > 1 else 0.0
-        a = math.radians(yaw + spread)
+        a = math.radians(yaw + turn + spread)
         out.append((pos[0] + math.cos(a) * dist_cm, pos[1] + math.sin(a) * dist_cm, pos[2] + 50.0,
-                    (yaw + spread + 180.0) % 360.0))
+                    (yaw + turn + spread + 180.0) % 360.0))
     return out
 
 
@@ -447,6 +491,8 @@ def build(action, st):
         pts = spawn_points(st, cnt)
         if not pts:
             return [], _say("не знаю, где Скиф", "don't know where Skif is")
+        # высоту мод 0.0.6 сам опускает на землю под точкой (nestor.spec.py, автор 05.10.2026:
+        # «кабан висел в воздухе»): слова команды и их порядок не менять, мод их читает
         return ["XSpawnObjBySID %s %d 0 %.0f %.0f %.0f 0 %.0f 0" % (sid, rank, x, y, z, yw) for x, y, z, yw in pts], \
             _say("%s ×%d в 22 м перед Скифом", "%s ×%d, 22 m ahead of Skif") % (creature_label(sid), cnt)
     if do == "починить":
@@ -470,7 +516,129 @@ def build(action, st):
     # раз, через 15 с здоровье 70 -> 0, Скиф умер (журнал моста 08:07:30-31).
     if do == "вперёд":
         return ["XTeleportPlayerInForwardDirection %d 0" % (cnt * 100)], _say("вперёд на %d м", "forward %d m") % cnt
+    if do == "лечение":
+        w = (what + " " + str(action.get("_q", ""))).lower()
+        if re.search(r"вс[её]\b|полност|целиком|\ball\b|everything|\bfull", w):
+            picks = HEAL
+        else:
+            picks = [h for h in HEAL if re.search(h[0], w, re.I)] or [HEAL[-1]]
+        return ["XApplyEffectOnPlayer %s" % h[1] for h in picks], ", ".join(_say(h[2], h[3]) for h in picks)
+    if do == "замедление":
+        return ["XSetXRayMode 1"], _say("время замедлено на несколько секунд", "time slowed for a few seconds")
+    if do == "скорость":
+        return ["XSetPlayerSpeedMultiplier %.1f" % SPEED_X], _say("Скиф быстрее на минуту",
+                                                                  "Skif is faster for a minute")
+    if do == "пси":
+        return psy_strike(what, int(round(n)), st, str(action.get("_q", "")), action.get("_human"))
+    if do == "подмога":
+        pts = spawn_points(st, cnt, 1200.0, 180.0)
+        if not pts:
+            return [], _say("не знаю, где Скиф", "don't know where Skif is")
+        return ["XSpawnObjBySID %s 2 0 %.0f %.0f %.0f 0 %.0f 0" % (HELP_SID, x, y, z, yw) for x, y, z, yw in pts], \
+            _say("подмога: одиночки ×%d идут со спины", "backup: %d loners coming from behind") % cnt
     return [], _say("нет такого действия «%s»", "no such action \"%s\"") % do
+
+
+def psy_kind(what, q=""):
+    for text in (what, q):
+        for kind, pat in PSY_KINDS:
+            if re.search(pat, (text or "").lower()):
+                return kind
+    return "сбить"
+
+
+def kind_label(q):
+    """Вид из слов Скифа как имя агента в обстановке: «бандит», «кабан», «одиночка»."""
+    cs = creature_sid(q)
+    if not cs:
+        return None
+    if cs[0] in CREATURE_NAMES:
+        return CREATURE_NAMES[cs[0]][0]
+    m = re.match(r"General(?:NPC|Zombie)_([A-Za-z]+)_", cs[0])
+    return FACTION_NAMES.get(m.group(1), ("",))[0] if m else None
+
+
+def pick_target(pool, n, q):
+    """Цель из списка с номерами: «целится» в словах Скифа, потом вид из его слов (номер
+    модели, если вид совпал), потом номер модели, потом целящийся, насторожённый, ближний."""
+    live = [a for a in pool if a.get("uid")]
+    if not live:
+        return None
+    if re.search(r"целит|прицел|\baim", q or "", re.I):
+        aiming = [a for a in live if a.get("aim")]
+        if aiming:
+            return aiming[0]
+    by_n = pool[n - 1] if 1 <= n <= len(pool) and pool[n - 1].get("uid") else None
+    label = kind_label(q)
+    if label:
+        same = [a for a in live if a["who"].endswith(label)]
+        if same:
+            return by_n if by_n in same else same[0]
+    if by_n:
+        return by_n
+    for key in ("aim", "threat"):
+        hot = [a for a in live if a.get(key)]
+        if hot:
+            return hot[0]
+    return live[0]
+
+
+def psy_strike(what, n, st, q="", is_human=None):
+    """Пси-удар чутья (0.2): по номеру существа из обстановки мода 0.0.7 (номера GetGUID).
+    Откат PSY_COOLDOWN, цена: пси Скифа (Х-31)."""
+    st = st or {}
+    kind = psy_kind(what, q)
+    left = PSY_COOLDOWN - (time.time() - _PSY_T[0])
+    if left > 0:
+        return [], _say("чутьё ещё не собралось, через %d с", "the gut hasn't recovered yet, %d s") % math.ceil(left)
+    name = (lambda a: L.name(a["who"]))
+    if kind == "напугать":
+        cmds = ["XOverrideCombatTacticsInRadius 3000 3"]
+        text = _say("все в 30 м отступают", "everyone within 30 m falls back")
+    else:
+        if st.get("v", 0) < 7:
+            return [], _say("для этого нужен мод NESTOR 0.0.7: обнови файлы мода",
+                            "this needs NESTOR mod 0.0.7: update the mod files")
+        human = is_human or (lambda w: True)
+        if kind == "поднять":
+            # Номер модели из общего списка трупов (как в сводке); не человек: ближний человек.
+            # Встают только свежие (проба 05.10.2026: старые трупы монолитовцев, разложенные игрой,
+            # не поднялись, убитые при Скифе встали сразу): сначала тех, кого мост видел живыми.
+            # Поднятый сразу друг Скифу (без этого шёл на него), номер у зомби тот же.
+            pool = st.get("dead") or []
+            fresh = st.get("_fresh") or set()
+            ok = (lambda d: d.get("uid") and human(d["who"]))
+            t = pool[n - 1] if 1 <= n <= len(pool) and ok(pool[n - 1]) else None
+            if t is None or (fresh and t["uid"] not in fresh):
+                t = (next((d for d in pool if ok(d) and d["uid"] in fresh), None) or t
+                     or next((d for d in pool if ok(d)), None))
+            if t is None:
+                return [], _say("рядом нет человеческих трупов", "no human bodies nearby")
+            cmds = ["XResurrectNPCAsZombie %d" % t["uid"], "XSetRelation %d 0 1000" % t["uid"]]
+            text = _say("поднят зомби, свой: %s", "raised as a zombie on your side: %s") % name(t)
+        else:
+            pool = st.get("agents") or []
+            t = pick_target(pool, n, q)
+            if t is None:
+                return [], _say("рядом никого", "nobody nearby")
+            if kind == "сбить":
+                cmds, text = ["XKnockDownNpc %d" % t["uid"]], _say("сбит с ног: %s в %d м", "knocked down: %s at %d m") % (
+                    name(t), t["m"])
+            elif kind == "ранить":
+                cmds, text = ["XWoundNpcByUID %d" % t["uid"]], _say("ранен: %s в %d м", "wounded: %s at %d m") % (
+                    name(t), t["m"])
+            else:
+                mates = [a for a in pool if a.get("uid") and a is not t and a.get("loc") and t.get("loc")]
+                if not mates:
+                    return [], _say("рядом с ним некого стравить", "nobody near him to turn against")
+                p = min(mates, key=lambda a: math.dist(a["loc"], t["loc"]))
+                # проба 05.10.2026: стравленные дерутся, если стоят рядом и к Скифу нейтральны;
+                # враждебные к Скифу бьют его, а не друг друга
+                cmds = ["XSetRelation %d %d -1000" % (t["uid"], p["uid"]), "XSetRelation %d %d -1000" % (p["uid"], t["uid"]),
+                        "XSetRelation %d 0 0" % t["uid"], "XSetRelation %d 0 0" % p["uid"]]
+                text = _say("стравлены: %s и %s", "turned on each other: %s and %s") % (name(t), name(p))
+    _PSY_T[0] = time.time()
+    return cmds + [PSY_COST], text
 
 
 def guard(actions, question):
@@ -524,14 +692,18 @@ def correction(question, last_give):
     return None
 
 
-def build_all(actions, st):
-    """-> (команды через «;», что вышло, что нет)."""
+def build_all(actions, st, question="", is_human=None, follow=None):
+    """-> (команды через «;», что вышло, что нет). question и is_human нужны пси-удару (цель
+    по словам Скифа, люди среди трупов); в follow (список) ложатся отложенные обратные
+    шаги сделанного: (через сколько секунд, команда), FOLLOW."""
     cmds, done, failed = [], [], []
     for a in (actions or [])[:3]:
-        c, what = build(a, st)
+        c, what = build(dict(a, _q=question, _human=is_human), st)
         if c:
             cmds += c
             done.append(what)
+            if follow is not None and a.get("do") in FOLLOW:
+                follow.append(FOLLOW[a["do"]])
         else:
             failed.append(what)
     return ";".join(cmds), done, failed

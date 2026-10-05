@@ -233,7 +233,8 @@ def parse_state(state):
     поле: место X=.. Y=.. Z=.. для направления. Старый мод этих полей не пишет:
     me = None, направления нет.
     """
-    out = {"seq": None, "v": 0, "pos": None, "pos_cm": None, "yaw": None, "agents": [], "got": None, "me": None}
+    out = {"seq": None, "v": 0, "pos": None, "pos_cm": None, "yaw": None, "agents": [], "dead": [], "got": None,
+           "me": None}
     me = {}
     body = state.split("|got=", 1)
     if len(body) == 2:
@@ -263,14 +264,24 @@ def parse_state(state):
                 if len(f) < 5:
                     continue
                 a = {"who": ("зомби " if f[4] == "true" else "") + who(f[0]),
-                     "m": round(float(f[1]) / 100.0), "aim": f[2] == "true", "threat": f[3] == "true", "loc": None}
+                     "m": round(float(f[1]) / 100.0), "aim": f[2] == "true", "threat": f[3] == "true", "loc": None,
+                     "uid": None}
                 if len(f) >= 6:
                     a["loc"] = _xyz(f[5])
+                if len(f) >= 7:                   # 0.0.7: номер существа для рук по цели
+                    a["uid"] = _num(f[6], int)
                 out["agents"].append(a)
+            elif key == "d":
+                # 0.0.7: труп ближе 30 м «меш,см,место,номер» (поднять зомби)
+                f = val.split(",")
+                if len(f) >= 4:
+                    out["dead"].append({"who": who(f[0]), "m": round(float(f[1]) / 100.0), "loc": _xyz(f[2]),
+                                        "uid": _num(f[3], int)})
         except (KeyError, ValueError):
             continue
     out["me"] = me or None
     out["agents"].sort(key=lambda a: a["m"])
+    out["dead"].sort(key=lambda a: a["m"])
     return out
 
 
@@ -312,15 +323,21 @@ def pet_label(a, pets):
 
 
 def describe(st, limit=8, pets=()):
-    """Обстановка словами для модели."""
+    """Обстановка словами для модели. С номерами существ (мод 0.0.7) каждое помечено №N:
+    по нему модель указывает цель пси-удара (actions.psy_strike), трупы своим списком."""
+    bodies = ""
+    if st.get("dead"):
+        bodies = L.tr("bodies", "; ".join(L.tr("num", i) + L.tr("agent", L.name(d["who"]), d["m"])
+                                          + ((" " + direction(st, d)) if direction(st, d) else "")
+                                          for i, d in enumerate(st["dead"][:4], 1)))
     if not st["agents"]:
-        return L.tr("nobody")
+        return L.tr("nobody") + bodies
     parts = []
-    for a in st["agents"][:limit]:
+    for i, a in enumerate(st["agents"][:limit], 1):
         name = L.name(a["who"])
         if pet_label(a, pets):
             name += L.tr("pet_dog") if "пёс" in a["who"] or "собака" in a["who"] else L.tr("pet_beast")
-        s = L.tr("agent", name, a["m"])
+        s = (L.tr("num", i) if a.get("uid") else "") + L.tr("agent", name, a["m"])
         d = direction(st, a)
         if d:
             s += " " + d
@@ -330,7 +347,7 @@ def describe(st, limit=8, pets=()):
             s += L.tr("alert")
         parts.append(s)
     more = len(st["agents"]) - limit
-    return L.tr("near") + "; ".join(parts) + (L.tr("more", more) if more > 0 else ".")
+    return L.tr("near") + "; ".join(parts) + (L.tr("more", more) if more > 0 else ".") + bodies
 
 
 # ---------------------------------------------------------------- сам Скиф (0.0.4)
@@ -813,9 +830,11 @@ _DO_RU = (r"дай|дайте|выдай|насыпь|подкинь|подки�
           r"убери|верни|вызови|роди|почини|перенеси|начни|останови|успокой|уйми|убей|прогони|отгони|вылечи|подлечи|"
           r"спаси|помоги|найди|покажи|открой|закрой|принеси|достань|телепортируй|перемести|усыпи|разбуди|накорми|"
           r"позови|призови|приведи|наполни|смени|поменяй|переключи|зажги|потуши|сотри|удали|отмени|прекрати|"
-          r"добавь|прибавь|убавь|сними|брось|выкинь")
+          r"добавь|прибавь|убавь|сними|брось|выкинь|сбей|повали|рани|напугай|отпугни|стравь|натрави|подними|"
+          r"воскреси|оживи|замедли|ускорь")
 _DO_EN = (r"give|spawn|summon|create|repair|fix|teleport|start|stop|remove|bring|kill|calm|heal|help|find|show|open|"
-          r"close|fetch|call|change|switch|refill|put|add|clear|cancel")
+          r"close|fetch|call|change|switch|refill|put|add|clear|cancel|knock|wound|scare|frighten|raise|"
+          r"resurrect|slow|speed|patch")
 IMPERATIVE = re.compile(r"\b(" + _DO_RU + r"|хочу|можно|" + _DO_EN + r"|make|set|turn|move|want|need|let)\b", re.I)
 
 
@@ -941,7 +960,8 @@ def llm_diary(summary):
     for shot_q, shot_a in L.P("diary_shots"):
         msgs += [{"role": "user", "content": shot_q}, {"role": "assistant", "content": shot_a}]
     msgs.append({"role": "user", "content": summary})
-    return _line(_chat(msgs, 0.5, 80), 240)
+    # 0.3: при 0.5 9B переносила в строку события из образцов («Скиф попросил ночь», 05.10.2026)
+    return _line(_chat(msgs, 0.3, 80), 240)
 
 
 def llm_compact(lines):
@@ -955,7 +975,7 @@ def session_summary(sess):
     if sess["aims"]:
         parts.append(L.tr("s_aims", ", ".join(L.tr("s_aim", *kv) for kv in sess["aims"].most_common(4))))
     if sess["beasts"]:
-        parts.append(L.tr("s_beasts", ", ".join(sorted(sess["beasts"]))))
+        parts.append(L.tr("s_beasts", ", ".join(sorted(L.name(x) for x in sess["beasts"]))))
     parts += [L.tr("s_event", *kv) for kv in sess["events"].items()]
     if sess["deaths"]:
         parts.append(L.tr("s_deaths", ", ".join(L.name(x) for x in sess["deaths"])))
@@ -963,8 +983,15 @@ def session_summary(sess):
         parts.append(L.tr("s_near", ", ".join(L.name(x) for x in sess["near"])))
     if sess["weapons"]:
         parts.append(L.tr("s_weapons", ", ".join(sess["weapons"])))
-    if sess["talk"]:
-        parts.append(L.tr("s_talk", " / ".join("«%s» → «%s»" % qa for qa in sess["talk"][-5:])))
+    # ответов чутья в сводке нет: летописец пересказывал их выдумки как события игры
+    # (дневник 05.10.2026). Из разговоров только сделанное руками по просьбе Скифа, прочее
+    # числом: с вопросами и неисполненными просьбами 9B писала «рюкзак проверен»,
+    # «плазменную пушку взял» (прогон 05.10.2026 13:10)
+    did = [(q, done) for q, done in sess["talk"] if done]
+    if did:
+        parts.append(L.tr("s_talk", "; ".join(L.tr("s_done", q, ", ".join(done)) for q, done in did[-5:])))
+    if len(sess["talk"]) > len(did):
+        parts.append(L.tr("s_chat", len(sess["talk"]) - len(did)))
     return " ".join(parts)
 
 
@@ -1152,7 +1179,9 @@ def report(args, **kw):
             log("итог игры не записан: %s" % e)
 
 
-SLOW_S = 6.0                                  # медиана первых трёх реплик чутья дольше: модели тесно
+SLOW_S = 6.0
+BACKUP_WAIT = 120.0
+ALLY_S, ALLY_EVERY, ALLY_FAR = 300.0, 20.0, 15   # 0.2: союзники 5 мин, звать раз в 20 с дальше 15 м                                  # медиана первых трёх реплик чутья дольше: модели тесно
 STATUS = ("idle", "")                         # для лаунчера: wait, start, ready, fail, done
 STOP = threading.Event()                      # лаунчер сменил настройки: перестать ждать игру
 
@@ -1243,6 +1272,8 @@ def serve(args):
         mem = {"quiet": time.time()}          # шестое чувство: что и когда уже сказано
         st = None
         last_raw = 0.0
+        later, backup, last_reply = [], None, ""      # 0.2: отложенные команды, подмога, последняя реплика
+        allies, last_follow, seen_alive = {}, 0.0, set()   # 0.2: союзники (номер -> до когда), кого видели живым
         while game_running():
             if args.persona == "sixth":
                 if os.path.exists(OUT):
@@ -1255,6 +1286,8 @@ def serve(args):
                             continue
                         last_mtime = m
                         st = parse_state(props.get("State", ""))
+                        seen_alive.update(a["uid"] for a in st["agents"] if a.get("uid"))
+                        st["_fresh"] = seen_alive
                         for e in track_life(st, mem, memo, sess, time.time()):
                             log("[жизнь] " + e)
                         # сырые значения о Скифе раз в 30 с: по ним уточнять пороги body_words
@@ -1274,6 +1307,35 @@ def serve(args):
                         log("в игре показано: " + note)
                     except Exception as e:
                         log("сообщение в игру не ушло: %s" % e)
+                # 0.2: отложенные шаги рук (снять замедление, вернуть скорость), подмога (своим и
+                # к Скифу, когда родившиеся одиночки появятся в обстановке с номерами) и союзники:
+                # подмогу и поднятых зомби звать к Скифу, если отошли дальше 15 м (проба 05.10.2026:
+                # дойдя по XMoveToPlayer, они уходят бродить)
+                due = [c for t, c in later if t <= now]
+                fresh = []
+                if backup and st is not None:
+                    fresh = [a["uid"] for a in st["agents"] if a.get("uid") and a["uid"] not in backup["known"]
+                             and a.get("loc") and is_human(a["who"])
+                             and any(math.hypot(a["loc"][0] - p[0], a["loc"][1] - p[1]) < 1500 for p in backup["pts"])]
+                    due += ["XSetRelation %d 0 1000;XMoveToPlayer %d 3" % (u, u) for u in fresh]
+                    if now > backup["until"]:
+                        backup = None
+                if allies and st is not None and now - last_follow >= ALLY_EVERY:
+                    last_follow = now
+                    allies = {u: t for u, t in allies.items() if t > now}
+                    due += ["XMoveToPlayer %d 3" % a["uid"] for a in st["agents"]
+                            if a.get("uid") in allies and a["m"] > ALLY_FAR]
+                if due and st is not None and not os.path.exists(IN):
+                    later = [(t, c) for t, c in later if t > now]
+                    if backup:
+                        backup["known"].update(fresh)
+                    allies.update({u: now + ALLY_S for u in fresh})
+                    reply_seq += 1
+                    try:
+                        send_in(last_reply, reply_seq, ";".join(due))
+                        log("[действие] отложенное: %s" % ";".join(due))
+                    except Exception as e:
+                        log("отложенное не ушло: %s" % e)
                 # вопрос из окна F4: отвечать вне очереди, по последней обстановке
                 q = None
                 if box is not None:
@@ -1312,7 +1374,20 @@ def serve(args):
                             fix = _actions.correction(q, last_give)
                             if fix:
                                 acts = [fix]
-                    cmd, done, failed = _actions.build_all(acts, st)
+                    follow = []
+                    cmd, done, failed = _actions.build_all(acts, st, question=q, is_human=is_human, follow=follow)
+                    later += [(time.time() + d, c) for d, c in follow]
+                    for u in re.findall(r"XResurrectNPCAsZombie (\d+)", cmd):
+                        allies[int(u)] = time.time() + ALLY_S
+                        later.append((time.time() + 4.0, "XSetRelation %s 0 1000" % u))
+                    if st and _actions.HELP_SID in cmd:
+                        # подмога: новые люди у точек рождения станут своими и пойдут к Скифу.
+                        # Проба 05.10.2026 15:08: за 40 с по фракции «одиночка» не нашлось никого,
+                        # теперь по точке (ближе 15 м) и 2 минуты
+                        pts = [tuple(map(float, m)) for m in re.findall(
+                            _actions.HELP_SID + r" \d+ 0 (-?[\d.]+) (-?[\d.]+) (-?[\d.]+)", cmd)]
+                        backup = {"until": time.time() + BACKUP_WAIT, "pts": pts,
+                                  "known": {a["uid"] for a in st["agents"] if a.get("uid")}}
                     if acts and not done:
                         text = L.tr("fail", failed[0])
                     elif done:
@@ -1343,6 +1418,7 @@ def serve(args):
                     open(IN + ".tmp", "wb").write(data)
                     os.replace(IN + ".tmp", IN)
                     talk = (talk + [(user, text, acts)])[-6:]
+                    last_reply = text
                     recent = (recent + [text])[-6:]
                     mem["any"] = time.time()      # 8 с показа ответ не перебивать
                     to_history(box, memo, "ты", q)
@@ -1356,7 +1432,7 @@ def serve(args):
                     # ответ уже на экране: теперь разобрать, что запомнить о Скифе
                     if memo is not None:
                         memo.count_talk()
-                        sess["talk"].append((q, text))
+                        sess["talk"].append((q, list(done)))
                         try:
                             adds, drops, raw = llm_extract(q, text, memo.facts()) if worth_remembering(q) \
                                 else ([], [], "")
