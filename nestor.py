@@ -45,7 +45,7 @@ import types
 import urllib.request
 import zipfile
 
-VERSION = "0.1.1-alpha"
+VERSION = "0.1.2-alpha"
 FROZEN = getattr(sys, "frozen", False)
 # Оконная сборка PyInstaller без консоли: stdout и stderr равны None, а мост пишет
 # журнал и через print, и sys.stdout.reconfigure при импорте. Заглушка до импорта моста.
