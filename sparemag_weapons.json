@@ -1,0 +1,4399 @@
+{
+ "ammo": {
+  "A012": {
+   "A": "A012A",
+   "D": "A012D",
+   "E": "A012E"
+  },
+  "A045": {
+   "A": "A045A",
+   "D": "A045D",
+   "E": "A045E"
+  },
+  "A545": {
+   "A": "A545A",
+   "D": "A545D",
+   "E": "A545E"
+  },
+  "A556": {
+   "A": "A556A",
+   "D": "A556D",
+   "E": "A556E",
+   "S": "A556S"
+  },
+  "A762": {
+   "A": "A762A",
+   "D": "A762D",
+   "E": "A762E"
+  },
+  "A762NATO": {
+   "A": "A762NATOA",
+   "D": "A762NATOD",
+   "S": "A762NATOS"
+  },
+  "A762Sniper": {
+   "A": "A762SniperA",
+   "D": "A762SniperD",
+   "S": "A762SniperS"
+  },
+  "A918": {
+   "A": "A918A",
+   "D": "A918D"
+  },
+  "A919": {
+   "A": "A919A",
+   "D": "A919D"
+  },
+  "A939": {
+   "A": "A939A",
+   "D": "A939D",
+   "E": "A939E",
+   "S": "A939S"
+  },
+  "AGA": {
+   "D": "AGA"
+  },
+  "AHEDP": {
+   "D": "AHEDP"
+  },
+  "APG7V": {
+   "D": "APG7V"
+  },
+  "AVOG": {
+   "D": "AVOG"
+  }
+ },
+ "letters": {
+  "A012": "DAE",
+  "A045": "DAE",
+  "A545": "DAE",
+  "A556": "DASE",
+  "A762": "DAE",
+  "A762NATO": "DAS",
+  "A762Sniper": "DAS",
+  "A918": "DA",
+  "A919": "DA",
+  "A939": "DASE",
+  "AGA": ""
+ },
+ "mrules": [
+  [
+   "SK_mg_pkp00000_mag_big",
+   null,
+   350
+  ],
+  [
+   "SK_mg_pkp00000_mag_increased",
+   null,
+   250
+  ],
+  [
+   "SM_ar_ak_bigmag_",
+   null,
+   45
+  ],
+  [
+   "SM_ar_gp3_round_mag",
+   null,
+   90
+  ],
+  [
+   "SM_ar_grim0_bigmag_",
+   null,
+   30
+  ],
+  [
+   "SM_ar_grim0_drumag_",
+   null,
+   45
+  ],
+  [
+   "SM_ar_kharod000_bigmag_",
+   null,
+   40
+  ],
+  [
+   "SM_ar_lav_increased_",
+   null,
+   30
+  ],
+  [
+   "SM_ar_lav_mag_",
+   null,
+   20
+  ],
+  [
+   "SM_ar_m160_bigmag_",
+   null,
+   50
+  ],
+  [
+   "SM_kora_mag_increased_",
+   null,
+   10
+  ],
+  [
+   "SM_pp_bucket0_increased_",
+   null,
+   30
+  ],
+  [
+   "SM_pt_apb_increased_",
+   null,
+   30
+  ],
+  [
+   "SM_pt_pm_increased_",
+   null,
+   12
+  ],
+  [
+   "SM_pt_udp_increasedmag_",
+   null,
+   20
+  ],
+  [
+   "SM_shg_d1200_bigmag_",
+   null,
+   12
+  ],
+  [
+   "SM_shg_d1200_drumag_",
+   null,
+   20
+  ],
+  [
+   "SM_shg_m86000_bigmag_",
+   null,
+   10
+  ],
+  [
+   "SM_smg_integ_increased_",
+   null,
+   30
+  ],
+  [
+   "SM_smg_m1000_increased_",
+   null,
+   40
+  ],
+  [
+   "SM_smg_vip_bigmag_",
+   null,
+   40
+  ],
+  [
+   "SM_smg_zubr0_magincreased_",
+   null,
+   64
+  ],
+  [
+   "SM_sr_carabine_mar_bigmag_",
+   null,
+   20
+  ],
+  [
+   "SM_sr_gauss_mag_increased_",
+   null,
+   20
+  ],
+  [
+   "SM_sr_svu_mag_increased_",
+   null,
+   20
+  ],
+  [
+   "SM_Wpn_Fora230_Mag_Increased_",
+   null,
+   40
+  ],
+  [
+   "SM_Wpn_Gp3a_MagHuge_",
+   null,
+   50
+  ],
+  [
+   "SM_Wpn_Gp3a_MagIncreased_",
+   null,
+   30
+  ],
+  [
+   "SM_Wpn_SKP_Magincreased_",
+   null,
+   20
+  ],
+  [
+   "SK_mg_pkp00000_mag_big",
+   "Gun_Tank_",
+   500
+  ],
+  [
+   "SM_sr_gauss_mag_increased_",
+   "GunGauss_Scar_SP",
+   99
+  ]
+ ],
+ "out_of_scope": {
+  "EN_BuckLaunch_Data": "данные подствольника",
+  "GunRpg7_GL": "калибр APG7V вне охвата",
+  "MeleeShovel": "ёмкость 0",
+  "MeleeStub": "ёмкость 0",
+  "UA_GLaunch_Weapon_Data_En": "калибр AHEDP вне охвата",
+  "UA_GLaunch_Weapon_Data_Ru": "калибр AVOG вне охвата"
+ },
+ "universe_size": 2715,
+ "weapons": {
+  "Deluxe_GunAK74_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_ST",
+   "tcap": 30
+  },
+  "GuardGunAK74_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_ST",
+   "tcap": 30
+  },
+  "GuardGunAKU_PP": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAKU_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAKU_MagDefault"
+   ],
+   "setup": "GunAKU_PP",
+   "tcap": 30
+  },
+  "GuardGunAPB_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 18,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunAPB_MagDefault": {
+     "cap": 18,
+     "meshes": [
+      "SM_pt_apb_mag_empty",
+      "SM_pt_apb_mag_full"
+     ]
+    },
+    "GunAPB_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pt_apb_increased_empty",
+      "SM_pt_apb_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAPB_MagDefault"
+   ],
+   "setup": "GunAPB_HG",
+   "tcap": 18
+  },
+  "GuardGunBucket_PP": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 20,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunBucket_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_pp_bucket0_mag_empty",
+      "SM_pp_bucket0_mag_full"
+     ]
+    },
+    "GunBucket_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pp_bucket0_increased_empty",
+      "SM_pp_bucket0_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunBucket_MagDefault"
+   ],
+   "setup": "GunBucket_PP",
+   "tcap": 20
+  },
+  "GuardGunD12_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunD12_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_mag_empty",
+      "SM_shg_d1200_mag_full"
+     ]
+    },
+    "GunD12_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_shg_d1200_bigmag_empty",
+      "SM_shg_d1200_bigmag_full"
+     ]
+    },
+    "GunD12_MagLarge": {
+     "cap": 20,
+     "meshes": [
+      "SM_shg_d1200_drumag_empty",
+      "SM_shg_d1200_drumag_full"
+     ]
+    },
+    "GunD12_MagPaired": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_twinmag_empty",
+      "SM_shg_d1200_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunD12_MagDefault"
+   ],
+   "setup": "GunD12_SG",
+   "tcap": 8
+  },
+  "GuardGunDnipro_ST": {
+   "alts": [
+    "A762Sniper"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DA"
+   ],
+   "mags": {
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunDnipro_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_mag_empty",
+      "SM_ar_dni_mag_full"
+     ]
+    },
+    "GunDnipro_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_twinmag_empty",
+      "SM_ar_dni_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunDnipro_MagDefault"
+   ],
+   "setup": "GunDnipro_ST",
+   "tcap": 30
+  },
+  "GuardGunFora_ST": {
+   "alts": [
+    "A556"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_fora0_mag_empty",
+      "SM_ar_fora0_mag_full"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunFora_MagDefault"
+   ],
+   "setup": "GunFora_ST",
+   "tcap": 30
+  },
+  "GuardGunG37_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGP37_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_gp3_mag_empty",
+      "SM_ar_gp3_mag_full"
+     ]
+    },
+    "GunGP37_MagLarge": {
+     "cap": 90,
+     "meshes": [
+      "SM_ar_gp3_round_mag",
+      "SM_ar_gp3_round_mag_empty"
+     ]
+    },
+    "GunGP37_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_gp3_twin_mag_empty",
+      "SM_ar_gp3_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP37_MagDefault"
+   ],
+   "setup": "GunG37_ST",
+   "tcap": 30
+  },
+  "GuardGunGP3A_DMR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 20,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunGP3A_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagDefault_Empty_01",
+      "SM_Wpn_Gp3a_MagDefault_Full_01"
+     ]
+    },
+    "GunGP3A_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagIncreased_Empty_01",
+      "SM_Wpn_Gp3a_MagIncreased_Full_01"
+     ]
+    },
+    "GunGP3A_MagLarge": {
+     "cap": 50,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagHuge_Empty_01",
+      "SM_Wpn_Gp3a_MagHuge_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP3A_MagDefault"
+   ],
+   "setup": "GunGP3A_DMR_GS",
+   "tcap": 20
+  },
+  "GuardGunGrim_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGrim_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_grim0_mag_empty",
+      "SM_ar_grim0_mag_full"
+     ]
+    },
+    "GunGrim_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_grim0_bigmag_empty",
+      "SM_ar_grim0_bigmag_full"
+     ]
+    },
+    "GunGrim_MagLarge": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_grim0_drumag_empty",
+      "SM_ar_grim0_drumag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGrim_MagDefault"
+   ],
+   "setup": "GunGrim_ST",
+   "tcap": 20
+  },
+  "GuardGunGvintar_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 10,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGvintar_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_gvintar0_mag_empty",
+      "SM_sr_gvintar0_mag_full"
+     ]
+    },
+    "GunGvintar_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGvintar_MagDefault"
+   ],
+   "setup": "GunGvintar_ST",
+   "tcap": 10
+  },
+  "GuardGunIntegral_PP": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 20,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunIntegral_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_smg_integ_mag_empty",
+      "SM_smg_integ_mag_full"
+     ]
+    },
+    "GunIntegral_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_integ_increased_empty",
+      "SM_smg_integ_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunIntegral_MagDefault"
+   ],
+   "setup": "GunIntegral_PP",
+   "tcap": 20
+  },
+  "GuardGunKharod_ST": {
+   "alts": [
+    "A545"
+   ],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunKharod_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunKharod_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_kharod000_twin_mag_empty",
+      "SM_ar_kharod000_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunKharod_MagDefault"
+   ],
+   "setup": "GunKharod_ST",
+   "tcap": 30
+  },
+  "GuardGunLavina_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunLavina_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    },
+    "GunLavina_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_lav_increased_empty",
+      "SM_ar_lav_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunLavina_MagDefault"
+   ],
+   "setup": "GunLavina_ST",
+   "tcap": 20
+  },
+  "GuardGunM10_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM10_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_m1000_mag_empty",
+      "SM_smg_m1000_mag_full"
+     ]
+    },
+    "GunM10_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_m1000_increased_empty",
+      "SM_smg_m1000_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM10_MagDefault"
+   ],
+   "setup": "GunM10_HG",
+   "tcap": 30
+  },
+  "GuardGunM16_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "GunM16_ST",
+   "tcap": 30
+  },
+  "GuardGunM701_SP": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 5,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunM701_MagDefault": {
+     "cap": 5,
+     "meshes": [
+      "SM_sr_m701_mag_empty",
+      "SM_sr_m701_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM701_MagDefault"
+   ],
+   "setup": "GunM701_SP",
+   "tcap": 5
+  },
+  "GuardGunM860_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 6,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM860_MagLarge": {
+     "cap": 10,
+     "meshes": [
+      "SM_shg_m86000_bigmag_empty",
+      "SM_shg_m86000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [],
+   "setup": "GunM860_SG",
+   "tcap": 6
+  },
+  "GuardGunMark_SP": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunMark_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_carabine_mar_mag_empty",
+      "SM_sr_carabine_mar_mag_full"
+     ]
+    },
+    "GunMark_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_carabine_mar_bigmag_empty",
+      "SM_sr_carabine_mar_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunMark_MagDefault"
+   ],
+   "setup": "GunMark_SP",
+   "tcap": 10
+  },
+  "GuardGunObrez_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunObrez_SG",
+   "tcap": 2
+  },
+  "GuardGunPKP_MG": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 150,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunPKP_MagDefault": {
+     "cap": 150,
+     "meshes": [
+      "SK_mg_pkp00000_mag_default"
+     ]
+    },
+    "GunPKP_MagIncreased": {
+     "cap": 250,
+     "meshes": [
+      "SK_mg_pkp00000_mag_increased"
+     ]
+    },
+    "GunPKP_MagLarge": {
+     "cap": 350,
+     "meshes": [
+      "SK_mg_pkp00000_mag_big"
+     ]
+    }
+   },
+   "pre": [
+    "GunPKP_MagDefault"
+   ],
+   "setup": "GunPKP_MG",
+   "tcap": 150
+  },
+  "GuardGunPM_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "GunPM_HG",
+   "tcap": 8
+  },
+  "GuardGunRam2_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 14,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunRam2_SG",
+   "tcap": 14
+  },
+  "GuardGunRhino_HG": {
+   "alts": [
+    "A012"
+   ],
+   "cal": "A939",
+   "gs_cap": 6,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunRhino_HG",
+   "tcap": 6
+  },
+  "GuardGunSKP_DMR": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunSKP_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_Wpn_SKP_MagDefault_Empty_01",
+      "SM_Wpn_SKP_MagDefault_Full_01"
+     ]
+    },
+    "GunSKP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_SKP_Magincreased_Empty_01",
+      "SM_Wpn_SKP_Magincreased_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunSKP_MagDefault"
+   ],
+   "setup": "GunSKP_DMR_GS",
+   "tcap": 10
+  },
+  "GuardGunSPSA_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunSPSA_SG",
+   "tcap": 8
+  },
+  "GuardGunSVDM_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVDM_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svm_mag_empty",
+      "SM_sr_svm_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVDM_MagDefault"
+   ],
+   "setup": "GunSVDM_SP",
+   "tcap": 10
+  },
+  "GuardGunSVU_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVU_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svu_mag_empty",
+      "SM_sr_svu_mag_full"
+     ]
+    },
+    "GunSVU_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_svu_mag_increased_empty",
+      "SM_sr_svu_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVU_MagDefault"
+   ],
+   "setup": "GunSVU_SP",
+   "tcap": 10
+  },
+  "GuardGunTOZ_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunTOZ_SG",
+   "tcap": 2
+  },
+  "GuardGunUDP_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 15,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunUDP_MagDefault": {
+     "cap": 15,
+     "meshes": [
+      "SM_pt_udp_mag_empty",
+      "SM_pt_udp_mag_full"
+     ]
+    },
+    "GunUDP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_pt_udp_increasedmag_empty",
+      "SM_pt_udp_increasedmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunUDP_MagDefault"
+   ],
+   "setup": "GunUDP_HG",
+   "tcap": 15
+  },
+  "GuardGunViper_PP": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 30,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunViper_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_vip_mag_empty",
+      "SM_smg_vip_mag_full"
+     ]
+    },
+    "GunViper_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_vip_bigmag_empty",
+      "SM_smg_vip_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunViper_MagDefault"
+   ],
+   "setup": "GunViper_PP",
+   "tcap": 30
+  },
+  "GuardGunZubr_PP": {
+   "alts": [],
+   "cal": "A919",
+   "gs_cap": 50,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunZubr_MagDefault": {
+     "cap": 50,
+     "meshes": [
+      "SM_smg_zubr0_mag_empty",
+      "SM_smg_zubr0_mag_full"
+     ]
+    },
+    "GunZubr_MagIncreased": {
+     "cap": 64,
+     "meshes": [
+      "SM_smg_zubr0_magincreased_empty",
+      "SM_smg_zubr0_magincreased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunZubr_MagDefault"
+   ],
+   "setup": "GunZubr_PP",
+   "tcap": 50
+  },
+  "GunAK74_Korshunov_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_ST",
+   "tcap": 30
+  },
+  "GunAK74_Phantom_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_Phantom_ST",
+   "tcap": 30
+  },
+  "GunAK74_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_ST",
+   "tcap": 30
+  },
+  "GunAK74_Strelok_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "GunAK74_Strelok_ST",
+   "tcap": 30
+  },
+  "GunAK9_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK9_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_ak9_mag_empty",
+      "SM_ak_ak9_mag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK9_MagDefault"
+   ],
+   "setup": "GunAK9_ST_GS",
+   "tcap": 30
+  },
+  "GunAKU_PP": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAKU_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAKU_MagDefault"
+   ],
+   "setup": "GunAKU_PP",
+   "tcap": 30
+  },
+  "GunAPB_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 18,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunAPB_MagDefault": {
+     "cap": 18,
+     "meshes": [
+      "SM_pt_apb_mag_empty",
+      "SM_pt_apb_mag_full"
+     ]
+    },
+    "GunAPB_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pt_apb_increased_empty",
+      "SM_pt_apb_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAPB_MagDefault"
+   ],
+   "setup": "GunAPB_HG",
+   "tcap": 18
+  },
+  "GunArevLight_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunArevLight_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_ArevLight_Mag_Empty_01",
+      "SM_Wpn_ArevLight_Mag_Full_01"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunArevLight_MagDefault"
+   ],
+   "setup": "GunArevLight_AR_GS",
+   "tcap": 30
+  },
+  "GunArevPrecise_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunArevPrecise_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_ArevPrecise_Mag_Empty_01",
+      "SM_Wpn_ArevPrecise_Mag_Full_01"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunArevPrecise_MagDefault"
+   ],
+   "setup": "GunArevPrecise_AR_GS",
+   "tcap": 30
+  },
+  "GunArev_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunArev_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_Arev_Mag_Empty_01",
+      "SM_Wpn_Arev_Mag_Full_01"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunArev_MagDefault"
+   ],
+   "setup": "GunArev_ST_GS",
+   "tcap": 30
+  },
+  "GunBucket_PP": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 20,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunBucket_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_pp_bucket0_mag_empty",
+      "SM_pp_bucket0_mag_full"
+     ]
+    },
+    "GunBucket_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pp_bucket0_increased_empty",
+      "SM_pp_bucket0_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunBucket_MagDefault"
+   ],
+   "setup": "GunBucket_PP",
+   "tcap": 20
+  },
+  "GunClapper_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 6,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM860_MagLarge": {
+     "cap": 10,
+     "meshes": [
+      "SM_shg_m86000_bigmag_empty",
+      "SM_shg_m86000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [],
+   "setup": "GunClapper_SG_GS",
+   "tcap": 6
+  },
+  "GunD12_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunD12_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_mag_empty",
+      "SM_shg_d1200_mag_full"
+     ]
+    },
+    "GunD12_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_shg_d1200_bigmag_empty",
+      "SM_shg_d1200_bigmag_full"
+     ]
+    },
+    "GunD12_MagLarge": {
+     "cap": 20,
+     "meshes": [
+      "SM_shg_d1200_drumag_empty",
+      "SM_shg_d1200_drumag_full"
+     ]
+    },
+    "GunD12_MagPaired": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_twinmag_empty",
+      "SM_shg_d1200_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunD12_MagDefault"
+   ],
+   "setup": "GunD12_SG",
+   "tcap": 8
+  },
+  "GunDefender_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunDefender_MagIncreased": {
+     "cap": 14,
+     "meshes": [
+      "SM_Wpn_D12_SkinDuty_MagIncreased_Empty_01",
+      "SM_Wpn_D12_SkinDuty_MagIncreased_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunDefender_MagIncreased"
+   ],
+   "setup": "GunDefender_SG",
+   "tcap": 14
+  },
+  "GunDniproDuty_ST": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunDnipro_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_mag_empty",
+      "SM_ar_dni_mag_full"
+     ]
+    },
+    "GunDnipro_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_twinmag_empty",
+      "SM_ar_dni_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunDnipro_MagDefault"
+   ],
+   "setup": "GunDniproDuty_ST",
+   "tcap": 30
+  },
+  "GunDnipro_ST": {
+   "alts": [
+    "A762Sniper"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DA"
+   ],
+   "mags": {
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunDnipro_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_mag_empty",
+      "SM_ar_dni_mag_full"
+     ]
+    },
+    "GunDnipro_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_twinmag_empty",
+      "SM_ar_dni_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunDnipro_MagDefault"
+   ],
+   "setup": "GunDnipro_ST",
+   "tcap": 30
+  },
+  "GunFallschirmjager_DMR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 20,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunGP3A_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagDefault_Empty_01",
+      "SM_Wpn_Gp3a_MagDefault_Full_01"
+     ]
+    },
+    "GunGP3A_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagIncreased_Empty_01",
+      "SM_Wpn_Gp3a_MagIncreased_Full_01"
+     ]
+    },
+    "GunGP3A_MagLarge": {
+     "cap": 50,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagHuge_Empty_01",
+      "SM_Wpn_Gp3a_MagHuge_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP3A_MagDefault"
+   ],
+   "setup": "GunFallschirmjager_DMR_GS",
+   "tcap": 20
+  },
+  "GunFora230_PP": {
+   "alts": [
+    "A918",
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 20,
+   "lets": [
+    "DA",
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunFora230_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_Fora230_Mag_Empty_01",
+      "SM_Wpn_Fora230_Mag_Full_01"
+     ]
+    },
+    "GunFora230_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_Wpn_Fora230_Mag_Increased_Empty_01",
+      "SM_Wpn_Fora230_Mag_Increased_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunFora230_MagDefault"
+   ],
+   "setup": "GunFora230_PP_GS",
+   "tcap": 20
+  },
+  "GunFora_ST": {
+   "alts": [
+    "A556"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_fora0_mag_empty",
+      "SM_ar_fora0_mag_full"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunFora_MagDefault"
+   ],
+   "setup": "GunFora_ST",
+   "tcap": 30
+  },
+  "GunG37V2_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunG37V2_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_gp3_twin_mag_empty",
+      "SM_ar_gp3_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunG37V2_MagPaired"
+   ],
+   "setup": "GunG37V2_ST",
+   "tcap": 30
+  },
+  "GunG37_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGP37_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_gp3_mag_empty",
+      "SM_ar_gp3_mag_full"
+     ]
+    },
+    "GunGP37_MagLarge": {
+     "cap": 90,
+     "meshes": [
+      "SM_ar_gp3_round_mag",
+      "SM_ar_gp3_round_mag_empty"
+     ]
+    },
+    "GunGP37_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_gp3_twin_mag_empty",
+      "SM_ar_gp3_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP37_MagDefault"
+   ],
+   "setup": "GunG37_ST",
+   "tcap": 30
+  },
+  "GunGP3A_DMR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 20,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunGP3A_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagDefault_Empty_01",
+      "SM_Wpn_Gp3a_MagDefault_Full_01"
+     ]
+    },
+    "GunGP3A_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagIncreased_Empty_01",
+      "SM_Wpn_Gp3a_MagIncreased_Full_01"
+     ]
+    },
+    "GunGP3A_MagLarge": {
+     "cap": 50,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagHuge_Empty_01",
+      "SM_Wpn_Gp3a_MagHuge_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP3A_MagDefault"
+   ],
+   "setup": "GunGP3A_DMR_GS",
+   "tcap": 20
+  },
+  "GunGauss_SP": {
+   "alts": [],
+   "cal": "AGA",
+   "gs_cap": 10,
+   "lets": [
+    ""
+   ],
+   "mags": {
+    "GunGauss_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_gauss_mag_empty",
+      "SM_sr_gauss_mag_full"
+     ]
+    },
+    "GunGauss_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_gauss_mag_increased_empty",
+      "SM_sr_gauss_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGauss_MagDefault"
+   ],
+   "setup": "GunGauss_SP",
+   "tcap": 10
+  },
+  "GunGauss_Scar_SP": {
+   "alts": [],
+   "cal": "AGA",
+   "gs_cap": 99,
+   "lets": [
+    ""
+   ],
+   "mags": {
+    "GunGauss_Scar_MagHuge": {
+     "cap": 99,
+     "meshes": [
+      "SM_sr_gauss_mag_increased_empty",
+      "SM_sr_gauss_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGauss_Scar_MagHuge"
+   ],
+   "setup": "GunGauss_Scar_SP",
+   "tcap": 99
+  },
+  "GunGonta_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 5,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunGonta_SP_GS",
+   "tcap": 5
+  },
+  "GunGrim_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGrim_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_grim0_mag_empty",
+      "SM_ar_grim0_mag_full"
+     ]
+    },
+    "GunGrim_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_grim0_bigmag_empty",
+      "SM_ar_grim0_bigmag_full"
+     ]
+    },
+    "GunGrim_MagLarge": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_grim0_drumag_empty",
+      "SM_ar_grim0_drumag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGrim_MagDefault"
+   ],
+   "setup": "GunGrim_ST",
+   "tcap": 20
+  },
+  "GunGvintar_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 10,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGvintar_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_gvintar0_mag_empty",
+      "SM_sr_gvintar0_mag_full"
+     ]
+    },
+    "GunGvintar_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGvintar_MagDefault"
+   ],
+   "setup": "GunGvintar_ST",
+   "tcap": 10
+  },
+  "GunHSG72_DMR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 20,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunGP3A_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagDefault_Empty_01",
+      "SM_Wpn_Gp3a_MagDefault_Full_01"
+     ]
+    },
+    "GunGP3A_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagIncreased_Empty_01",
+      "SM_Wpn_Gp3a_MagIncreased_Full_01"
+     ]
+    },
+    "GunGP3A_MagLarge": {
+     "cap": 50,
+     "meshes": [
+      "SM_Wpn_Gp3a_MagHuge_Empty_01",
+      "SM_Wpn_Gp3a_MagHuge_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunGP3A_MagDefault"
+   ],
+   "setup": "GunHSG72_DMR_GS",
+   "tcap": 20
+  },
+  "GunIntegral_PP": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 20,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunIntegral_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_smg_integ_mag_empty",
+      "SM_smg_integ_mag_full"
+     ]
+    },
+    "GunIntegral_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_integ_increased_empty",
+      "SM_smg_integ_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunIntegral_MagDefault"
+   ],
+   "setup": "GunIntegral_PP",
+   "tcap": 20
+  },
+  "GunKharodFreedom_ST": {
+   "alts": [
+    "A545"
+   ],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunKharod_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunKharod_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_kharod000_twin_mag_empty",
+      "SM_ar_kharod000_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunKharod_MagDefault"
+   ],
+   "setup": "GunKharodFreedom_ST",
+   "tcap": 30
+  },
+  "GunKharod_ST": {
+   "alts": [
+    "A545"
+   ],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunKharod_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunKharod_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_kharod000_twin_mag_empty",
+      "SM_ar_kharod000_twin_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunKharod_MagDefault"
+   ],
+   "setup": "GunKharod_ST",
+   "tcap": 30
+  },
+  "GunKora_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 7,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunKora_MagDefault": {
+     "cap": 7,
+     "meshes": [
+      "SM_kora_mag_empty",
+      "SM_kora_mag_full"
+     ]
+    },
+    "GunKora_MagIncreased": {
+     "cap": 10,
+     "meshes": [
+      "SM_kora_mag_increased_empty",
+      "SM_kora_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunKora_MagDefault"
+   ],
+   "setup": "GunKora_HG",
+   "tcap": 7
+  },
+  "GunLavina_ST": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunLavina_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    },
+    "GunLavina_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_lav_increased_empty",
+      "SM_ar_lav_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunLavina_MagDefault"
+   ],
+   "setup": "GunLavina_ST",
+   "tcap": 20
+  },
+  "GunM10_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM10_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_m1000_mag_empty",
+      "SM_smg_m1000_mag_full"
+     ]
+    },
+    "GunM10_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_m1000_increased_empty",
+      "SM_smg_m1000_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM10_MagDefault"
+   ],
+   "setup": "GunM10_HG",
+   "tcap": 30
+  },
+  "GunM16_ST": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "GunM16_ST",
+   "tcap": 30
+  },
+  "GunM701_SP": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 5,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunM701_MagDefault": {
+     "cap": 5,
+     "meshes": [
+      "SM_sr_m701_mag_empty",
+      "SM_sr_m701_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM701_MagDefault"
+   ],
+   "setup": "GunM701_SP",
+   "tcap": 5
+  },
+  "GunM860_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 6,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM860_MagLarge": {
+     "cap": 10,
+     "meshes": [
+      "SM_shg_m86000_bigmag_empty",
+      "SM_shg_m86000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [],
+   "setup": "GunM860_SG",
+   "tcap": 6
+  },
+  "GunMark_SP": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunMark_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_carabine_mar_mag_empty",
+      "SM_sr_carabine_mar_mag_full"
+     ]
+    },
+    "GunMark_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_carabine_mar_bigmag_empty",
+      "SM_sr_carabine_mar_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunMark_MagDefault"
+   ],
+   "setup": "GunMark_SP",
+   "tcap": 10
+  },
+  "GunNightStalker_HG": {
+   "alts": [],
+   "cal": "A919",
+   "gs_cap": 12,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunNightStalker_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_nightstalker_mag_increased_empty",
+      "SM_nightstalker_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunNightStalker_MagIncreased"
+   ],
+   "setup": "GunNightStalker_HG",
+   "tcap": 12
+  },
+  "GunObrez_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunObrez_SG",
+   "tcap": 2
+  },
+  "GunPKP_Korshunov_MG": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 300,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunPKP_Korshunov_MagLarge": {
+     "cap": 350,
+     "meshes": [
+      "SK_mg_pkp00000_mag_big"
+     ]
+    }
+   },
+   "pre": [
+    "GunPKP_Korshunov_MagLarge"
+   ],
+   "setup": "GunPKP_Korshunov_MG_GS",
+   "tcap": 350
+  },
+  "GunPKP_MG": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 150,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunPKP_MagDefault": {
+     "cap": 150,
+     "meshes": [
+      "SK_mg_pkp00000_mag_default"
+     ]
+    },
+    "GunPKP_MagIncreased": {
+     "cap": 250,
+     "meshes": [
+      "SK_mg_pkp00000_mag_increased"
+     ]
+    },
+    "GunPKP_MagLarge": {
+     "cap": 350,
+     "meshes": [
+      "SK_mg_pkp00000_mag_big"
+     ]
+    }
+   },
+   "pre": [
+    "GunPKP_MagDefault"
+   ],
+   "setup": "GunPKP_MG",
+   "tcap": 150
+  },
+  "GunPM_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "GunPM_HG",
+   "tcap": 8
+  },
+  "GunPM_PDA_Tutorial_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "GunPM_HG",
+   "tcap": 8
+  },
+  "GunRam2_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 14,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunRam2_SG",
+   "tcap": 14
+  },
+  "GunRhino_HG": {
+   "alts": [
+    "A012"
+   ],
+   "cal": "A939",
+   "gs_cap": 6,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunRhino_HG",
+   "tcap": 6
+  },
+  "GunSKP_DMR": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunSKP_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_Wpn_SKP_MagDefault_Empty_01",
+      "SM_Wpn_SKP_MagDefault_Full_01"
+     ]
+    },
+    "GunSKP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_SKP_Magincreased_Empty_01",
+      "SM_Wpn_SKP_Magincreased_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunSKP_MagDefault"
+   ],
+   "setup": "GunSKP_DMR_GS",
+   "tcap": 10
+  },
+  "GunSPSA_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunSPSA_SG",
+   "tcap": 8
+  },
+  "GunSPSA_Sniper_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "AE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunSPSA_Sniper_SG",
+   "tcap": 8
+  },
+  "GunSVDM_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVDM_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svm_mag_empty",
+      "SM_sr_svm_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVDM_MagDefault"
+   ],
+   "setup": "GunSVDM_SP",
+   "tcap": 10
+  },
+  "GunSVU_CQB_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVU_CQB_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_svu_mag_increased_empty",
+      "SM_sr_svu_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVU_CQB_MagIncreased"
+   ],
+   "setup": "GunSVU_CQB_SP",
+   "tcap": 20
+  },
+  "GunSVU_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVU_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svu_mag_empty",
+      "SM_sr_svu_mag_full"
+     ]
+    },
+    "GunSVU_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_svu_mag_increased_empty",
+      "SM_sr_svu_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVU_MagDefault"
+   ],
+   "setup": "GunSVU_SP",
+   "tcap": 10
+  },
+  "GunSVU_Sniper_Duga_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVU_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svu_mag_empty",
+      "SM_sr_svu_mag_full"
+     ]
+    },
+    "GunSVU_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_svu_mag_increased_empty",
+      "SM_sr_svu_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVU_MagDefault"
+   ],
+   "setup": "GunSVU_SP",
+   "tcap": 10
+  },
+  "GunTOZ_Gonta": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunTOZ_SG",
+   "tcap": 2
+  },
+  "GunTOZ_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunTOZ_SG",
+   "tcap": 2
+  },
+  "GunThreeLine_SP": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 5,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunThreeLine_SP_GS",
+   "tcap": 5
+  },
+  "GunTundra_DMR": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunSKP_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_Wpn_SKP_MagDefault_Empty_01",
+      "SM_Wpn_SKP_MagDefault_Full_01"
+     ]
+    },
+    "GunSKP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_Wpn_SKP_Magincreased_Empty_01",
+      "SM_Wpn_SKP_Magincreased_Full_01"
+     ]
+    }
+   },
+   "pre": [
+    "GunSKP_MagDefault"
+   ],
+   "setup": "GunTundra_DMR_GS",
+   "tcap": 10
+  },
+  "GunUDP_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 15,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunUDP_MagDefault": {
+     "cap": 15,
+     "meshes": [
+      "SM_pt_udp_mag_empty",
+      "SM_pt_udp_mag_full"
+     ]
+    },
+    "GunUDP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_pt_udp_increasedmag_empty",
+      "SM_pt_udp_increasedmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunUDP_MagDefault"
+   ],
+   "setup": "GunUDP_HG",
+   "tcap": 15
+  },
+  "GunViper_PP": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 30,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunViper_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_vip_mag_empty",
+      "SM_smg_vip_mag_full"
+     ]
+    },
+    "GunViper_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_vip_bigmag_empty",
+      "SM_smg_vip_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunViper_MagDefault"
+   ],
+   "setup": "GunViper_PP",
+   "tcap": 30
+  },
+  "GunWarszawa_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 40,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunWarszawa_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunWarszawa_MagIncreased"
+   ],
+   "setup": "GunWarszawa_AR_GS",
+   "tcap": 40
+  },
+  "GunZubr_PP": {
+   "alts": [],
+   "cal": "A919",
+   "gs_cap": 50,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunZubr_MagDefault": {
+     "cap": 50,
+     "meshes": [
+      "SM_smg_zubr0_mag_empty",
+      "SM_smg_zubr0_mag_full"
+     ]
+    },
+    "GunZubr_MagIncreased": {
+     "cap": 64,
+     "meshes": [
+      "SM_smg_zubr0_magincreased_empty",
+      "SM_smg_zubr0_magincreased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunZubr_MagDefault"
+   ],
+   "setup": "GunZubr_PP",
+   "tcap": 50
+  },
+  "Gun_Cavalier_SR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 5,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunM701_MagDefault": {
+     "cap": 5,
+     "meshes": [
+      "SM_sr_m701_mag_empty",
+      "SM_sr_m701_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM701_MagDefault"
+   ],
+   "setup": "Gun_Cavalier_SR_GS",
+   "tcap": 5
+  },
+  "Gun_Combatant_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "Gun_Combatant_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Deadeye_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 15,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunUDP_MagDefault": {
+     "cap": 15,
+     "meshes": [
+      "SM_pt_udp_mag_empty",
+      "SM_pt_udp_mag_full"
+     ]
+    },
+    "GunUDP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_pt_udp_increasedmag_empty",
+      "SM_pt_udp_increasedmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunUDP_MagDefault"
+   ],
+   "setup": "GunUDP_Deadeye_HG",
+   "tcap": 15
+  },
+  "Gun_Decider_AR": {
+   "alts": [
+    "A556"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DAE"
+   ],
+   "mags": {
+    "GunDecider_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_decider_mag_empty",
+      "SM_ar_decider_mag_full"
+     ]
+    },
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunDecider_MagDefault"
+   ],
+   "setup": "Gun_Decider_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Drowned_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunDrowned_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunDrowned_MagPaired"
+   ],
+   "setup": "Gun_Drowned_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Encourage_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 18,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunAPB_MagDefault": {
+     "cap": 18,
+     "meshes": [
+      "SM_pt_apb_mag_empty",
+      "SM_pt_apb_mag_full"
+     ]
+    },
+    "GunAPB_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pt_apb_increased_empty",
+      "SM_pt_apb_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAPB_MagDefault"
+   ],
+   "setup": "Gun_Encourage_HG_GS",
+   "tcap": 18
+  },
+  "Gun_GStreet_HG": {
+   "alts": [],
+   "cal": "A045",
+   "gs_cap": 40,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "Gun_GStreet_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_m1000_increased_empty",
+      "SM_smg_m1000_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "Gun_GStreet_MagIncreased"
+   ],
+   "setup": "Gun_GStreet_HG_GS",
+   "tcap": 40
+  },
+  "Gun_Gabion_AR": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunLavina_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    },
+    "GunLavina_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_lav_increased_empty",
+      "SM_ar_lav_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunLavina_MagDefault"
+   ],
+   "setup": "Gun_Gabion_AR_GS",
+   "tcap": 20
+  },
+  "Gun_Krivenko_HG": {
+   "alts": [],
+   "cal": "A919",
+   "gs_cap": 15,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunUDP_MagDefault": {
+     "cap": 15,
+     "meshes": [
+      "SM_pt_udp_mag_empty",
+      "SM_pt_udp_mag_full"
+     ]
+    },
+    "GunUDP_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_pt_udp_increasedmag_empty",
+      "SM_pt_udp_increasedmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunUDP_MagDefault"
+   ],
+   "setup": "Gun_Krivenko_HG_GS",
+   "tcap": 15
+  },
+  "Gun_Logarithm_SMG": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 20,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunIntegral_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_smg_integ_mag_empty",
+      "SM_smg_integ_mag_full"
+     ]
+    },
+    "GunIntegral_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_integ_increased_empty",
+      "SM_smg_integ_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunIntegral_MagDefault"
+   ],
+   "setup": "Gun_Logarithm_SMG_GS",
+   "tcap": 20
+  },
+  "Gun_Lummox_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_mag_empty",
+      "SM_ak_mag_full"
+     ]
+    },
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAK74_MagDefault"
+   ],
+   "setup": "Gun_Lummox_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Lynx_SR": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVDM_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svm_mag_empty",
+      "SM_sr_svm_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVDM_MagDefault"
+   ],
+   "setup": "Gun_Lynx_SR_GS",
+   "tcap": 10
+  },
+  "Gun_Margach_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunD12_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_mag_empty",
+      "SM_shg_d1200_mag_full"
+     ]
+    },
+    "GunD12_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_shg_d1200_bigmag_empty",
+      "SM_shg_d1200_bigmag_full"
+     ]
+    },
+    "GunD12_MagLarge": {
+     "cap": 20,
+     "meshes": [
+      "SM_shg_d1200_drumag_empty",
+      "SM_shg_d1200_drumag_full"
+     ]
+    },
+    "GunD12_MagPaired": {
+     "cap": 8,
+     "meshes": [
+      "SM_shg_d1200_twinmag_empty",
+      "SM_shg_d1200_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunD12_MagDefault"
+   ],
+   "setup": "Gun_Margach_SG_GS",
+   "tcap": 8
+  },
+  "Gun_Merc_AR": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 10,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGvintar_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_gvintar0_mag_empty",
+      "SM_sr_gvintar0_mag_full"
+     ]
+    },
+    "GunGvintar_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunGvintar_MagDefault"
+   ],
+   "setup": "Gun_Merc_AR_GS",
+   "tcap": 10
+  },
+  "Gun_ModelSpecial_HG": {
+   "alts": [
+    "A012"
+   ],
+   "cal": "A939",
+   "gs_cap": 6,
+   "lets": [
+    "DASE",
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "Gun_ModelSpecial_HG_GS",
+   "tcap": 6
+  },
+  "Gun_Novator_AR": {
+   "alts": [
+    "A556"
+   ],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE",
+    "DAE"
+   ],
+   "mags": {
+    "GunFora_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_ar_kharod000_bigmag_empty",
+      "SM_ar_kharod000_bigmag_full"
+     ]
+    },
+    "GunNovator_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_novator_mag_empty",
+      "SM_ar_novator_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunNovator_MagDefault"
+   ],
+   "setup": "Gun_Novator_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Partner_SR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 10,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunMark_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_carabine_mar_mag_empty",
+      "SM_sr_carabine_mar_mag_full"
+     ]
+    },
+    "GunMark_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_carabine_mar_bigmag_empty",
+      "SM_sr_carabine_mar_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunMark_MagDefault"
+   ],
+   "setup": "Gun_Partner_SR_GS",
+   "tcap": 10
+  },
+  "Gun_PistolMonolith_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "Gun_Monolit_HG_GS",
+   "tcap": 8
+  },
+  "Gun_Predator_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "Gun_Predator_SG_GS",
+   "tcap": 8
+  },
+  "Gun_ProjectY_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "Gun_Kaimanov_HG_GS",
+   "tcap": 8
+  },
+  "Gun_Rail_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 2,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "GunTOZ_SG",
+   "tcap": 2
+  },
+  "Gun_RatKiller_SMG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 50,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunZubr_MagIncreased": {
+     "cap": 64,
+     "meshes": [
+      "SM_smg_zubr0_magincreased_empty",
+      "SM_smg_zubr0_magincreased_full"
+     ]
+    },
+    "Gun_RatKiller_MagDefault": {
+     "cap": 50,
+     "meshes": [
+      "SM_smg_RatKiller_mag_empty",
+      "SM_smg_RatKiller_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "Gun_RatKiller_MagDefault"
+   ],
+   "setup": "Gun_RatKiller_SMG_GS",
+   "tcap": 50
+  },
+  "Gun_RifleMonolith_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "Gun_Monolit_AR_GS",
+   "tcap": 30
+  },
+  "Gun_S15_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 20,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunGrim_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_grim0_bigmag_empty",
+      "SM_ar_grim0_bigmag_full"
+     ]
+    },
+    "GunGrim_MagLarge": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_grim0_drumag_empty",
+      "SM_ar_grim0_drumag_full"
+     ]
+    },
+    "GunS15_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_s15_mag_empty",
+      "SM_ar_s15_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunS15_MagDefault"
+   ],
+   "setup": "Gun_S15_AR",
+   "tcap": 20
+  },
+  "Gun_SMGMonolith_SMG": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 30,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "GunViper_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_smg_vip_mag_empty",
+      "SM_smg_vip_mag_full"
+     ]
+    },
+    "GunViper_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_vip_bigmag_empty",
+      "SM_smg_vip_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunViper_MagDefault"
+   ],
+   "setup": "Gun_SMGMonolith_SMG_GS",
+   "tcap": 30
+  },
+  "Gun_SOFMOD_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "Gun_SOFMOD_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Shakh_SMG": {
+   "alts": [
+    "A045"
+   ],
+   "cal": "A919",
+   "gs_cap": 40,
+   "lets": [
+    "DA",
+    "DA"
+   ],
+   "mags": {
+    "Gun_Shakh_MagIncreased": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_vip_bigmag_empty",
+      "SM_smg_vip_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "Gun_Shakh_MagIncreased"
+   ],
+   "setup": "Gun_Shakh_SMG_GS",
+   "tcap": 40
+  },
+  "Gun_Sharpshooter_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "Gun_Sharpshooter_AR_GS",
+   "tcap": 30
+  },
+  "Gun_ShotgunMonolith_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 6,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunM860_MagLarge": {
+     "cap": 10,
+     "meshes": [
+      "SM_shg_m86000_bigmag_empty",
+      "SM_shg_m86000_bigmag_full"
+     ]
+    }
+   },
+   "pre": [],
+   "setup": "Gun_Monolit_SG_GS",
+   "tcap": 6
+  },
+  "Gun_Silence_SMG": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAKU_Silence_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_aku_Silence_mag_empty",
+      "SM_aku_Silence_mag_full"
+     ]
+    },
+    "GunAK_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ak_twinmag_empty",
+      "SM_ak_twinmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunAKU_Silence_MagDefault"
+   ],
+   "setup": "Gun_Silence_SMG_GS",
+   "tcap": 30
+  },
+  "Gun_SkifGun_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "GunPM_HG",
+   "tcap": 8
+  },
+  "Gun_Sledgehammer_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 8,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "Gun_Sledgehammer_SG_GS",
+   "tcap": 8
+  },
+  "Gun_Sotnyk_AR": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 30,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunAK74_MagIncreased": {
+     "cap": 45,
+     "meshes": [
+      "SM_ar_ak_bigmag_empty",
+      "SM_ar_ak_bigmag_full"
+     ]
+    },
+    "GunDnipro_MagPaired": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dni_twinmag_empty",
+      "SM_ar_dni_twinmag_full"
+     ]
+    },
+    "GunSotnyk_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_dnipro_skin_centurion_attachments_mag_empty"
+     ]
+    }
+   },
+   "pre": [
+    "GunSotnyk_MagDefault"
+   ],
+   "setup": "Gun_Sotnyk_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Spitfire_SMG": {
+   "alts": [],
+   "cal": "A545",
+   "gs_cap": 40,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {
+    "GunSpitfire_MagDefault": {
+     "cap": 40,
+     "meshes": [
+      "SM_smg_aku_mag_skin_spitfire_empty",
+      "SM_smg_aku_mag_skin_spitfire_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSpitfire_MagDefault"
+   ],
+   "setup": "Gun_Spitfire_SMG_GS",
+   "tcap": 40
+  },
+  "Gun_Spitter_SMG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 20,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunBucket_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_pp_bucket0_mag_empty",
+      "SM_pp_bucket0_mag_full"
+     ]
+    },
+    "GunBucket_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_pp_bucket0_increased_empty",
+      "SM_pp_bucket0_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunBucket_MagDefault"
+   ],
+   "setup": "Gun_Spitter_SMG_GS",
+   "tcap": 20
+  },
+  "Gun_Star_HG": {
+   "alts": [],
+   "cal": "A918",
+   "gs_cap": 8,
+   "lets": [
+    "DA"
+   ],
+   "mags": {
+    "GunPM_MagDefault": {
+     "cap": 8,
+     "meshes": [
+      "SM_pt_pm_mag_empty",
+      "SM_pt_pm_mag_full"
+     ]
+    },
+    "GunPM_MagIncreased": {
+     "cap": 12,
+     "meshes": [
+      "SM_pt_pm_increased_empty",
+      "SM_pt_pm_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunPM_MagDefault"
+   ],
+   "setup": "Gun_Star_HG_GS",
+   "tcap": 8
+  },
+  "Gun_Tank_MG": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 500,
+   "lets": [
+    "DAS"
+   ],
+   "mags": {
+    "GunTank_MagLarge": {
+     "cap": 500,
+     "meshes": [
+      "SK_mg_pkp00000_mag_big"
+     ]
+    }
+   },
+   "pre": [
+    "GunTank_MagLarge"
+   ],
+   "setup": "Gun_Tank_MG_GS",
+   "tcap": 500
+  },
+  "Gun_Texas_SG": {
+   "alts": [],
+   "cal": "A012",
+   "gs_cap": 14,
+   "lets": [
+    "DAE"
+   ],
+   "mags": {},
+   "pre": [],
+   "setup": "Gun_Texas_SG_GS",
+   "tcap": 14
+  },
+  "Gun_Trophy_AR": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 20,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunLavina_MagDefault": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    },
+    "GunLavina_MagIncreased": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_lav_increased_empty",
+      "SM_ar_lav_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunLavina_MagDefault"
+   ],
+   "setup": "Gun_Trophy_AR_GS",
+   "tcap": 20
+  },
+  "Gun_Unknown_AR": {
+   "alts": [],
+   "cal": "A556",
+   "gs_cap": 30,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunM16_MagDefault": {
+     "cap": 30,
+     "meshes": [
+      "SM_ar_m160_mag_empty",
+      "SM_ar_m160_mag_full"
+     ]
+    },
+    "GunM16_MagIncreased": {
+     "cap": 50,
+     "meshes": [
+      "SM_ar_m160_bigmag_empty",
+      "SM_ar_m160_bigmag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM16_MagDefault"
+   ],
+   "setup": "Gun_Unknown_AR_GS",
+   "tcap": 30
+  },
+  "Gun_Veteran_AR": {
+   "alts": [],
+   "cal": "A939",
+   "gs_cap": 10,
+   "lets": [
+    "DASE"
+   ],
+   "mags": {
+    "GunGvintar_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_ar_lav_mag_empty",
+      "SM_ar_lav_mag_full"
+     ]
+    },
+    "GunVeteran_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_veneran_mag_full",
+      "SM_sr_veteran_mag_empty"
+     ]
+    }
+   },
+   "pre": [
+    "GunVeteran_MagDefault"
+   ],
+   "setup": "Gun_Veteran_AR_GS",
+   "tcap": 10
+  },
+  "Gun_Whip_SR": {
+   "alts": [],
+   "cal": "A762Sniper",
+   "gs_cap": 10,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunSVU_MagDefault": {
+     "cap": 10,
+     "meshes": [
+      "SM_sr_svu_mag_empty",
+      "SM_sr_svu_mag_full"
+     ]
+    },
+    "GunSVU_MagIncreased": {
+     "cap": 20,
+     "meshes": [
+      "SM_sr_svu_mag_increased_empty",
+      "SM_sr_svu_mag_increased_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunSVU_MagDefault"
+   ],
+   "setup": "Gun_Whip_SR_GS",
+   "tcap": 10
+  },
+  "Gun_Zvirolov_SR": {
+   "alts": [],
+   "cal": "A762NATO",
+   "gs_cap": 5,
+   "lets": [
+    "SA"
+   ],
+   "mags": {
+    "GunM701_MagDefault": {
+     "cap": 5,
+     "meshes": [
+      "SM_sr_m701_mag_empty",
+      "SM_sr_m701_mag_full"
+     ]
+    }
+   },
+   "pre": [
+    "GunM701_MagDefault"
+   ],
+   "setup": "Gun_Zvirolov_SR_GS",
+   "tcap": 5
+  }
+ },
+ "wrules": [
+  [
+   "GunAK74_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "GunPM_",
+   "A918:8:::DA::"
+  ],
+  [
+   "GunSVU_",
+   "A762Sniper:10:::SA::"
+  ],
+  [
+   "GunTOZ_",
+   "A012:2:::DAE::"
+  ],
+  [
+   "GunAKU_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "GunAPB_",
+   "A918:18:::DA::"
+  ],
+  [
+   "GunD12_",
+   "A012:8:::DAE::"
+  ],
+  [
+   "GunG37_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunM10_",
+   "A045:30:::DAE::"
+  ],
+  [
+   "GunM16_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunPKP_",
+   "A762Sniper:150:::DAS::"
+  ],
+  [
+   "GunSKP_",
+   "A762Sniper:10:::DAS::"
+  ],
+  [
+   "GunUDP_",
+   "A045:15:::DAE::"
+  ],
+  [
+   "GunFora_",
+   "A545:30:A556::DAE:DAE:"
+  ],
+  [
+   "GunGP3A_",
+   "A762NATO:20:::DAS::"
+  ],
+  [
+   "GunGrim_",
+   "A939:20:::DASE::"
+  ],
+  [
+   "GunM701_",
+   "A762NATO:5:::SA::"
+  ],
+  [
+   "GunM860_",
+   "A012:6:::DAE::"
+  ],
+  [
+   "GunMark_",
+   "A762NATO:10:::DAS::"
+  ],
+  [
+   "GunRam2_",
+   "A012:14:::DAE::"
+  ],
+  [
+   "GunSPSA_",
+   "A012:8:::DAE::"
+  ],
+  [
+   "GunSVDM_",
+   "A762Sniper:10:::SA::"
+  ],
+  [
+   "GunZubr_",
+   "A919:50:::DA::"
+  ],
+  [
+   "GunObrez_",
+   "A012:2:::DAE::"
+  ],
+  [
+   "GunRhino_",
+   "A939:6:A012::DASE:DAE:"
+  ],
+  [
+   "GunViper_",
+   "A919:30:A045::DA:DA:"
+  ],
+  [
+   "GunBucket_",
+   "A918:20:::DA::"
+  ],
+  [
+   "GunDnipro_",
+   "A545:30:A762Sniper::DAE:DA:"
+  ],
+  [
+   "GunKharod_",
+   "A556:30:A545::DASE:DAE:"
+  ],
+  [
+   "GunLavina_",
+   "A939:20:::DASE::"
+  ],
+  [
+   "GunGvintar_",
+   "A939:10:::DASE::"
+  ],
+  [
+   "GunIntegral_",
+   "A919:20:A045::DA:DA:"
+  ],
+  [
+   "GunAK9_",
+   "A939:30:::DASE::"
+  ],
+  [
+   "GunArev_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunKora_",
+   "A045:7:::DAE::"
+  ],
+  [
+   "Gun_S15_",
+   "A545:20:::DAE::"
+  ],
+  [
+   "GunG37V2_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunGauss_",
+   "AGA:10:::::"
+  ],
+  [
+   "GunGonta_",
+   "A762Sniper:5:::DAS::"
+  ],
+  [
+   "GunHSG72_",
+   "A762NATO:20:::DAS::"
+  ],
+  [
+   "Gun_Lynx_",
+   "A762Sniper:10:::SA::"
+  ],
+  [
+   "Gun_Merc_",
+   "A939:10:::DASE::"
+  ],
+  [
+   "Gun_Rail_",
+   "A012:2:::DAE::"
+  ],
+  [
+   "Gun_Star_",
+   "A918:8:::DA::"
+  ],
+  [
+   "Gun_Tank_",
+   "A762Sniper:500:::DAS::"
+  ],
+  [
+   "Gun_Whip_",
+   "A762Sniper:10:::SA::"
+  ],
+  [
+   "GunTundra_",
+   "A762Sniper:10:::DAS::"
+  ],
+  [
+   "Gun_Shakh_",
+   "A919:40:A045::DA:DA:"
+  ],
+  [
+   "Gun_Texas_",
+   "A012:14:::DAE::"
+  ],
+  [
+   "GunClapper_",
+   "A012:6:::DAE::"
+  ],
+  [
+   "GunFora230_",
+   "A919:20:A918:A045:DA:DA:DA"
+  ],
+  [
+   "Gun_Gabion_",
+   "A939:20:::DASE::"
+  ],
+  [
+   "Gun_Lummox_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_SOFMOD_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "Gun_Sotnyk_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_Trophy_",
+   "A939:20:::DASE::"
+  ],
+  [
+   "GunDefender_",
+   "A012:14:::DAE::"
+  ],
+  [
+   "GunWarszawa_",
+   "A545:40:::DAE::"
+  ],
+  [
+   "Gun_Deadeye_",
+   "A045:15:::DAE::"
+  ],
+  [
+   "Gun_Decider_",
+   "A545:30:A556::DAE:DAE:"
+  ],
+  [
+   "Gun_Drowned_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_GStreet_",
+   "A045:40:::DAE::"
+  ],
+  [
+   "Gun_Margach_",
+   "A012:8:::DAE::"
+  ],
+  [
+   "Gun_Novator_",
+   "A545:30:A556::DAE:DAE:"
+  ],
+  [
+   "Gun_Partner_",
+   "A762NATO:10:::DAS::"
+  ],
+  [
+   "Gun_Silence_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_SkifGun_",
+   "A918:8:::DA::"
+  ],
+  [
+   "Gun_Spitter_",
+   "A918:20:::DA::"
+  ],
+  [
+   "Gun_Unknown_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "Gun_Veteran_",
+   "A939:10:::DASE::"
+  ],
+  [
+   "GunArevLight_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunSVU_CQB_SP",
+   "A762Sniper:20:::SA::"
+  ],
+  [
+   "GunThreeLine_",
+   "A762Sniper:5:::DAS::"
+  ],
+  [
+   "Gun_Cavalier_",
+   "A762NATO:5:::SA::"
+  ],
+  [
+   "Gun_Krivenko_",
+   "A919:15:::DA::"
+  ],
+  [
+   "Gun_Predator_",
+   "A012:8:::DAE::"
+  ],
+  [
+   "Gun_ProjectY_",
+   "A918:8:::DA::"
+  ],
+  [
+   "Gun_Spitfire_",
+   "A545:40:::DAE::"
+  ],
+  [
+   "Gun_Zvirolov_",
+   "A762NATO:5:::SA::"
+  ],
+  [
+   "GunDniproDuty_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_Combatant_",
+   "A545:30:::DAE::"
+  ],
+  [
+   "Gun_Encourage_",
+   "A918:18:::DA::"
+  ],
+  [
+   "Gun_Logarithm_",
+   "A919:20:A045::DA:DA:"
+  ],
+  [
+   "Gun_RatKiller_",
+   "A918:50:::DA::"
+  ],
+  [
+   "GunArevPrecise_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunGauss_Scar_SP",
+   "AGA:99:::::"
+  ],
+  [
+   "GunNightStalker_",
+   "A919:12:::DA::"
+  ],
+  [
+   "Gun_SMGMonolith_",
+   "A919:30:A045::DA:DA:"
+  ],
+  [
+   "GunKharodFreedom_",
+   "A556:30:A545::DASE:DAE:"
+  ],
+  [
+   "GunSPSA_Sniper_SG",
+   "A012:8:::AE::"
+  ],
+  [
+   "Gun_ModelSpecial_",
+   "A939:6:A012::DASE:DAE:"
+  ],
+  [
+   "Gun_Sharpshooter_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "Gun_Sledgehammer_",
+   "A012:8:::DAE::"
+  ],
+  [
+   "Gun_RifleMonolith_",
+   "A556:30:::DASE::"
+  ],
+  [
+   "GunFallschirmjager_",
+   "A762NATO:20:::DAS::"
+  ],
+  [
+   "GunPKP_Korshunov_MG",
+   "A545:350:::DAE::"
+  ],
+  [
+   "Gun_PistolMonolith_",
+   "A918:8:::DA::"
+  ],
+  [
+   "Gun_ShotgunMonolith_",
+   "A012:6:::DAE::"
+  ]
+ ]
+}

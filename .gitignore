@@ -1,0 +1,15 @@
+.venv/
+build/
+dist/
+__pycache__/
+*.pyc
+build.log
+bridge.log
+measure-out/
+nestor.json
+nestor.log
+engine.log
+chat.json
+engine/
+models/
+memory/
