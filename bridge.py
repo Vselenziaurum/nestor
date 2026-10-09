@@ -315,6 +315,15 @@ def direction(st, a):
     return s
 
 
+def side_of(st, a):
+    """Грубая сторона для узнавания стрелка без номера: front, side, back или ""."""
+    if st.get("yaw") is None or st.get("pos_cm") is None or a.get("loc") is None:
+        return ""
+    dx, dy = a["loc"][0] - st["pos_cm"][0], a["loc"][1] - st["pos_cm"][1]
+    x = abs((math.degrees(math.atan2(dy, dx)) - st["yaw"] + 180.0) % 360.0 - 180.0)
+    return "front" if x <= 70 else "back" if x > 110 else "side"
+
+
 def pet_label(a, pets):
     """Свой зверь Скифа: вид, который игрок назвал своим (питомец из ZonePets или
     Project Leash), и этот зверь не целится в Скифа. Дикий того же вида, взявший
@@ -463,6 +472,13 @@ def body_words(me):
 # Роль и образцы чутья теперь в lang.py (PROMPTS[язык]["sixth_sys"], ["sixth_shots"]).
 BEAST_IN, BEAST_OUT = 25, 35       # м: «появился» ближе 25, «ушёл» дальше 35
 BEAST_AGAIN = 60                   # с: тот же вид «появился» снова раньше: не новость (пси-двойники псевдособаки)
+# Прицел в перестрелке (журнал автора 08.10.2026 13:39-13:41: шесть «целится» подряд раз в
+# 25 с): о новом стрелке сразу, о тех же самых снова не раньше AIM_AGAIN_S, между любыми
+# предупреждениями о прицеле не меньше AIM_MIN_S. Стрелок узнаётся по номеру (мод 0.0.7),
+# у старого мода по виду и стороне.
+AIM_AGAIN_S, AIM_MIN_S = 75, 15
+# Разговор F4 (0.2.1): обменов в контексте, окно своих фраз чутья, обменов из прошлой игры
+HISTORY_N, SAID_WINDOW_S, PREV_GAME_N = 6, 600, 3
 HP_LOW, HP_OK = 30, 50             # %: «тяжело ранен» ниже 30, снова здоров выше 50
 RAD_HI, RAD_OK = 30, 10            # радиация (до 100): «растёт» выше 30, спала ниже 10
 
@@ -498,13 +514,24 @@ def sixth_reason(st, mem, now, args, memo=None):
     if me.get("dl") or mem.get("dead"):   # Скиф говорит с НПС или мёртв: чутьё молчит
         return None
     aim = [a for a in ag if a["aim"]]
-    if aim:
-        a = aim[0]
-        key = "aim:" + a["who"]
-        if fresh(key, args.min_gap * 3) and fresh("any", args.min_gap):
+    if aim and fresh("any", args.min_gap) and fresh("aim_any", AIM_MIN_S):
+        warned = mem.setdefault("aim_warned", {})
+
+        def akey(a):
+            return a["uid"] if a.get("uid") is not None else "%s|%s" % (a["who"], side_of(st, a))
+        new = [a for a in aim if now - warned.get(akey(a), -1e9) >= AIM_AGAIN_S]
+        if new:
+            # зашедший со спины раньше ближнего спереди
+            a = sorted(new, key=lambda x: (side_of(st, x) != "back", x["m"]))[0]
+            for x in aim:                       # одно предупреждение на всех, кто сейчас целится
+                warned[akey(x)] = now
+            mem["aim_any"] = now
             if is_human(a["who"]):
-                return L.tr("r_aim_human", where(st, a)), key
-            return L.tr("r_aim_mutant", L.name(a["who"]), where(st, a)), key
+                return L.tr("r_aim_human", where(st, a)), "aim:" + a["who"]
+            # мутант: свой род фраз (aimm), иначе модель брала «мушку» у людей (08.10.2026:
+            # «Спереди мушка. Беги» про кабана); зверю этот же вид сейчас не повод
+            mem["beast:" + a["who"]] = now
+            return L.tr("r_aim_mutant", L.name(a["who"]), where(st, a)), "aimm:" + a["who"]
     # Тяжёлое ранение: один раз на спуск ниже HP_LOW, снова только после HP_OK. Сразу за
     # прицелом: 04.10.2026 21:45:41 здоровье 12 %, а «тяжело ранен» прозвучало в 21:46:19,
     # после дежавю и прицела.
@@ -613,7 +640,38 @@ def _line(text, limit):
     return text.replace("\n", " ").strip().strip("«»\"' ")[:limit]
 
 
-def llm_sixth(reason, recent):
+def _sentences(text):
+    return [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s.strip()]
+
+
+def _bare(s):
+    return " ".join(re.findall(r"\w+", s.lower().replace("ё", "е")))
+
+
+def repeats(text, recent):
+    """Повтор недавнего: то же предложение в два слова и длиннее или три слова подряд.
+    Журнал автора 08.10.2026 13:39-13:41: «живому не место» в шести фразах подряд."""
+    old = {_bare(s) for r in recent for s in _sentences(r)}
+    grams = set()
+    for r in recent:
+        w = _bare(r).split()
+        grams |= {tuple(w[i:i + 3]) for i in range(len(w) - 2)}
+    if any(_bare(s) in old and len(_bare(s).split()) >= 2 and not set(_bare(s).split()) <= DIR_WORDS
+           for s in _sentences(text)):
+        return True
+    w = _bare(text).split()
+    return any(tuple(w[i:i + 3]) in grams and not set(w[i:i + 3]) <= DIR_WORDS for i in range(len(w) - 2))
+
+
+# направления и связки: их повтор не повтор («Сзади справа.» в каждом предупреждении)
+DIR_WORDS = {"спереди", "сзади", "слева", "справа", "сверху", "снизу", "рядом", "близко", "совсем", "неподалеку",
+             "далеко", "и", "в", "на", "ahead", "behind", "left", "right", "above", "below", "close", "near", "nearby",
+             "very", "on", "the", "far", "to", "and", "in"}
+
+
+def llm_sixth(reason, recent, avoid=()):
+    """recent: прошлые фразы того же рода повода (в просьбу не повторять); avoid: все
+    недавние фразы для проверки повтора после ответа."""
     msgs = [{"role": "system", "content": L.P("sixth_sys")}]
     for q, a in L.P("sixth_shots"):
         msgs += [{"role": "user", "content": q}, {"role": "assistant", "content": a}]
@@ -623,9 +681,22 @@ def llm_sixth(reason, recent):
     if recent:
         q += L.P("no_repeat") + " / ".join(recent[-3:])
     msgs.append({"role": "user", "content": q})
-    text = _line(_chat(msgs, 0.7, 30), 120)
-    # «Пёс сзади. Коротко.» (журнал 05.10.2026 10:39): модель дописала слово из своей роли
-    return re.sub(r"\s*(Коротко|Кратко|Briefly|Short)\.?\s*$", "", text, flags=re.I) or text
+    seen = list(recent[-3:]) + list(avoid)
+
+    def ask(temp):
+        t = _line(_chat(msgs, temp, 30), 120)
+        # «Пёс сзади. Коротко.» (журнал 05.10.2026 10:39): модель дописала слово из своей роли
+        return re.sub(r"\s*(Коротко|Кратко|Briefly|Short)\.?\s*$", "", t, flags=re.I) or t
+    text = ask(0.7)
+    if seen and repeats(text, seen):
+        text = ask(1.0)
+        if repeats(text, seen):
+            # повторённое предложение долой, если что-то остаётся (направление важнее хвоста)
+            old = {_bare(s) for r in seen for s in _sentences(r)}
+            keep = [s for s in _sentences(text) if not (_bare(s) in old and len(_bare(s).split()) >= 2
+                                                         and not set(_bare(s).split()) <= DIR_WORDS)]
+            text = " ".join(keep) or text
+    return text
 
 
 # ---------------------------------------------------------------- жизнь Скифа и дежавю (память, memory.py)
@@ -633,6 +704,10 @@ def llm_sixth(reason, recent):
 DEJA_R_CM, DEJA_DZ_CM = 3500, 1500   # дежавю: ближе 35 м к месту, где Скифа убивали, по высоте до 15 м
 DEJA_AWAY_CM, DEJA_AGAIN_S = 10000, 300   # снова напомнить: отходил дальше 100 м и прошло 5 мин
 DEJA_FRESH_S = 900                   # место этой жизни (без загрузки мира) молчит 15 мин
+# Одно дежавю на все места раз в DEJA_ANY_S: журнал автора 08.10.2026, 33 фразы из 95 были
+# дежавю, у мест, где он тестирует моды, по три-четыре подряд за полминуты (14:07:34,
+# 14:07:50, 14:08:05)
+DEJA_ANY_S = 240
 NEAR_PCT = 20                        # «едва не убили»: здоровье ниже 20 %
 RING_S = 12                          # кто целился за столько секунд до смерти, тот и убийца
 
@@ -719,7 +794,7 @@ def track_life(st, mem, memo, sess, now):
 
 def deja_reason(st, mem, now, memo):
     """Повод «здесь тебя уже убивали»: раз на подход к месту в этой жизни."""
-    if memo is None or st.get("pos_cm") is None:
+    if memo is None or st.get("pos_cm") is None or now - mem.get("deja_any", -1e9) < DEJA_ANY_S:
         return None
     pos = st["pos_cm"]
     said, away = mem.setdefault("deja_said", {}), mem.setdefault("deja_away", set())
@@ -736,12 +811,15 @@ def deja_reason(st, mem, now, memo):
         t = p.get("t", 0)
         if not (mem.get("life_start") is not None and t < mem["life_start"]) and time.time() - t < DEJA_FRESH_S:
             continue
-        said[pid] = now
-        away.discard(pid)
+        # все места рядом считаются сказанными: одно дежавю на скопление
+        for _d, q in memo.near_places(pos, DEJA_R_CM, DEJA_DZ_CM):
+            said[q["id"]] = now
+            away.discard(q["id"])
+        mem["deja_any"] = now
         who = L.name(p.get("who") or p.get("cause") or "")
         if p["kind"] == "смерть":
-            n = p.get("deaths", 1)
-            what = L.tr("deja_killed_n", n, plural(n, *L.tr("times"))) if n > 1 else L.tr("deja_killed")
+            # без числа: «Шестой раз сзади», «Тринадцать кабанов» (журнал 08.10.2026)
+            what = L.tr("deja_killed_many") if p.get("deaths", 1) > 1 else L.tr("deja_killed")
         else:
             what = L.tr("deja_near")
         dirw = direction(st, {"loc": p["pos"]})
@@ -771,7 +849,7 @@ def note_reason(sess, key):
     names = {"emission": "ev_emission", "hp": "ev_hp", "zombie": "ev_zombie", "back": "ev_back", "deja": "ev_deja"}
     if kind == "aim":
         sess["aims"][L.name(who_)] += 1
-    elif kind == "beast":
+    elif kind in ("beast", "aimm"):
         sess["beasts"].add(L.name(who_))
     elif kind == "body":
         sess["events"][L.tr({"bl": "ev_bl", "psy": "ev_psy", "rad": "ev_rad"}.get(who_, "ev_bl"))] += 1
@@ -873,11 +951,28 @@ def _ask_json(reply, acts=()):
                       ensure_ascii=False)
 
 
-def llm_answer(question, situation, history, memory_text="", powers=True):
-    """-> (сводка с вопросом, реплика, действия). С силой (мод 0.0.5) ответ по схеме
+def ago(t, now=None):
+    s = max(1, int((now or time.time()) - t))
+    return L.tr("ago_s", s) if s < 90 else L.tr("ago_m", round(s / 60.0))
+
+
+def said_text(said, now=None, window=SAID_WINDOW_S, limit=4):
+    """Свои недавние фразы чутья для разговора: «где он?» после «Сзади бандит» (автор
+    09.10.2026: «модель отвечает ровно на 1 вопрос и не помнит, что было до этого»)."""
+    now = now or time.time()
+    fresh = [(t, x) for t, x in said if now - t <= window][-limit:]
+    if not fresh:
+        return ""
+    quote = '"%s" (%s)' if L.en() else "«%s» (%s)"
+    return " " + L.P("ask_said") % "; ".join(quote % (x, ago(t, now)) for t, x in fresh)
+
+
+def llm_answer(question, situation, history, memory_text="", powers=True, said=()):
+    """-> (вопрос для истории, реплика, действия). С силой (мод 0.0.5) ответ по схеме
     actions.ACTION_SCHEMA; без неё простой текст и роль без силы, как в 0.0.4.
-    history: прежние (сводка с вопросом, ответ) без памяти: память только в
-    последнем сообщении, иначе контекст 8192 кончится на третьем вопросе."""
+    history: прежние (вопрос, ответ, действия) без сводок и памяти: память только в
+    последнем сообщении, сводки устаревают, а контекст 8192 (0.2.1: шесть обменов вместо
+    трёх со сводками). said: свои недавние фразы чутья (время, текст)."""
     cat = L.action_catalog(_actions.ACTIONS)
     powers_text = L.P("ask_powers") % "; ".join("%s: %s" % kv for kv in sorted(cat.items()))
     msgs = [{"role": "system", "content": L.P("ask_sys") + (powers_text if powers else "")}]
@@ -891,11 +986,12 @@ def llm_answer(question, situation, history, memory_text="", powers=True):
                  {"role": "assistant", "content": wrap(a, acts)}]
     # история с прежними действиями: без них модель видела свои ответы пустыми и
     # повторяла отказ (журнал 05.10.2026 07:16, «Кровососа нет, но псевдособака уснет»)
-    for h in history[-3:]:
+    for h in history[-HISTORY_N:]:
         q, a = h[0], h[1]
         msgs += [{"role": "user", "content": q}, {"role": "assistant", "content": wrap(a, h[2] if len(h) > 2 else ())}]
-    user = L.P("ask_situation") % (situation, question)
+    user = L.P("ask_situation") % (situation + said_text(said), question)
     msgs.append({"role": "user", "content": L.P("ask_memory") % (memory_text or L.P("ask_mem0"), user)})
+    user = L.P("ask_prev") % question                  # в историю только вопрос: сводка устареет
     if not powers:
         return user, _line(_chat(msgs, 0.7, 70), 200), []
     reply, acts = _ask_call(msgs, 0.7)
@@ -1260,7 +1356,10 @@ def serve(args):
         if box is not None:
             box.prefill(memo.state.get("history", []))
     sess = new_session()
-    talk = []                                 # (вопрос с обстановкой, ответ)
+    # (вопрос, ответ, действия); с 0.2.1 начинается с последних обменов прошлой игры
+    talk = [(L.P("ask_prev_game") % h[1], h[2], h[3] if len(h) > 3 else [])
+            for h in (memo.state.get("talk", []) if memo is not None else [])[-PREV_GAME_N:]]
+    said_log = []                             # (время, фраза) своих слов чутья без вопроса
     try:
         if os.path.exists(IN):
             os.remove(IN)
@@ -1359,7 +1458,7 @@ def serve(args):
                     try:
                         user, text, acts = llm_answer(q, ask_summary(st, memo, pets), talk,
                                                       memo.prompt_text() if memo else "",
-                                                      powers=bool(st) and st.get("v", 0) >= 5)
+                                                      powers=bool(st) and st.get("v", 0) >= 5, said=said_log)
                     except Exception as e:
                         log("модель не ответила на вопрос: %s" % e)
                         continue
@@ -1417,7 +1516,11 @@ def serve(args):
                     data = build_in(open(OUT, "rb").read(), text, reply_seq, cmd)
                     open(IN + ".tmp", "wb").write(data)
                     os.replace(IN + ".tmp", IN)
-                    talk = (talk + [(user, text, acts)])[-6:]
+                    talk = (talk + [(user, text, acts)])[-HISTORY_N:]
+                    if memo is not None:
+                        memo.state.setdefault("talk", []).append([time.strftime("%d.%m %H:%M"), q, text, acts])
+                        del memo.state["talk"][:-HISTORY_N]
+                        memo.save()
                     last_reply = text
                     recent = (recent + [text])[-6:]
                     mem["any"] = time.time()      # 8 с показа ответ не перебивать
@@ -1450,7 +1553,7 @@ def serve(args):
                         t1 = time.time()
                         try:
                             kind = key.split(":")[0]
-                            text = llm_sixth(reason, recent_kind.get(kind, []))
+                            text = llm_sixth(reason, recent_kind.get(kind, []), recent[-4:])
                         except Exception as e:
                             log("модель не ответила: %s" % e)
                             mem["any"] = now
@@ -1471,6 +1574,7 @@ def serve(args):
                         mem[key] = mem["any"] = time.time()
                         note_reason(sess, key)
                         recent_kind[kind] = (recent_kind.get(kind, []) + [text])[-3:]
+                        said_log = (said_log + [(time.time(), text)])[-6:]
                         to_history(box, memo, "чутьё", text)
                         log("[%s] %s | %s | модель %.1f с | %s" % (key, reason, describe(st, pets=pets_of(mem, memo))[:120],
                                                                     time.time() - t1, text))

@@ -100,6 +100,8 @@ T = {
         "r_zombie": "Повод: зомби. %s", "r_quiet": "Повод: долго никого вокруг.",
         "r_deja": "Повод: дежавю, %s%s. %s", "deja_killed": "здесь Скифа уже убивали",
         "deja_killed_n": "здесь Скифа уже убивали %d %s", "times": ("раз", "раза", "раз"),
+        "deja_killed_many": "здесь Скифа уже убивали, и не раз",
+        "ago_s": "%d с назад", "ago_m": "%d мин назад",
         "deja_near": "здесь Скифа едва не убили",
         "count": {2: "двое", 3: "трое", 4: "четверо"}, "many": "много",
         "sum_deja": " Дежавю: место, где Скифа %s%s, в %d м%s.", "sum_killed": "убивали",
@@ -152,6 +154,8 @@ T = {
         "r_zombie": "Reason: a zombie. %s", "r_quiet": "Reason: nobody around for a long time.",
         "r_deja": "Reason: déjà vu, %s%s. %s", "deja_killed": "Skif has already been killed here",
         "deja_killed_n": "Skif has already been killed here %d %s", "times": ("time", "times", "times"),
+        "deja_killed_many": "Skif has been killed here more than once",
+        "ago_s": "%d s ago", "ago_m": "%d min ago",
         "deja_near": "Skif was nearly killed here",
         "count": {2: "two", 3: "three", 4: "four"}, "many": "many",
         "sum_deja": " Déjà vu: a place where Skif was %s%s, %d m%s.", "sum_killed": "killed",
@@ -195,7 +199,9 @@ PROMPTS = {
         "sixth_sys": ("Ты шестое чувство сталкера Скифа в игре S.T.A.L.K.E.R. 2: тревожная интуиция, а не рассказчик. "
                       "Скажи ОДНУ короткую фразу по-русски, от 2 до 8 слов, как мысль в голове. Говори только о поводе, "
                       "который назван. Если названо, где это, начни с направления. Не перечисляй всех вокруг, людей не "
-                      "называй по фракциям. Без метафор и сравнений, без кавычек и тире, не выдумывай того, чего нет в поводе."),
+                      "называй по фракциям. Без метафор и сравнений, без кавычек и тире, не выдумывай того, чего нет в поводе. "
+                      "Числа из повода не называй. Ты не Скиф: о нём говори «ты», сам не воскресаешь и не дышишь. "
+                      "Не груби Скифу и не хорони его заранее."),
         "sixth_shots": [
             ("Повод: человек взял тебя на прицел. Где: сзади, рядом.", "Сзади! На мушке, уходи с линии."),
             ("Повод: человек взял тебя на прицел. Где: неподалёку.", "Целятся. В укрытие."),
@@ -231,7 +237,9 @@ PROMPTS = {
                     "Стороны (спереди, слева, сзади) и метры бери из сводки как есть. Если Скиф говорит, что зверь или "
                     "человек рядом свой (питомец, напарник), верь ему и не спорь: он знает лучше. «Свой пёс Скифа» в "
                     "сводке не враг, стрелять в него не советуй. Если Скиф называет своё имя или просит звать "
-                    "его иначе, прими это охотно: «Скиф» только прозвище, так его зовёт Зона."),
+                    "его иначе, прими это охотно: «Скиф» только прозвище, так его зовёт Зона. «Ты сам недавно сказал» в сводке это "
+                    "твои собственные предупреждения: «он», «тот», «там» в вопросе Скифа могут быть о них; где тот "
+                    "сейчас и жив ли, смотри по сводке."),
         "ask_powers": ("\nУ тебя есть сила: через тебя Зона может сделать то, о чём Скиф прямо просит. Действия (поле "
                        "actions, до трёх): %s. Существа и призраки рождаются спереди, в 20 м от Скифа. Для пси-удара в n "
                        "ставь номер (№) того, на кого указывает Скиф, из сводки: «рядом» для живых, «трупы» для "
@@ -243,6 +251,8 @@ PROMPTS = {
         "ask_user": "Память чутья:\n%s\n\nСводка. %s\nСкиф спрашивает тебя: «%s»",
         "ask_situation": "Сводка. %s\nСкиф спрашивает тебя: «%s»", "ask_memory": "Память чутья:\n%s\n\n%s",
         "what_can": "что ты умеешь?",
+        "ask_said": "Ты сам недавно сказал Скифу: %s.", "ask_prev": "Скиф спрашивал: «%s»",
+        "ask_prev_game": "В прошлой игре Скиф спрашивал: «%s»",
         "ask_shots": [
             (_RU_ASK_MEM0, _RU_ASK_ME + " Рядом со Скифом: бандит в 40 м сзади справа.", "Кто я?",
              "Ты Скиф, сталкер. А я твоё чутьё, всегда при тебе."),
@@ -279,6 +289,13 @@ PROMPTS = {
              "Сам напросился. Трое, спереди.", [{"do": "существо", "what": "кровосос", "n": 3}]),
             (_RU_ASK_MEM0, _RU_ASK_ME + " Вокруг Скифа на 50 м никого нет.", "дай патронов",
              "Держи, к твоему стволу.", [{"do": "патроны", "what": "", "n": 60}]),
+            # 0.2.1: свои недавние фразы в сводке, «он» в вопросе про них
+            (_RU_ASK_MEM0, _RU_ASK_ME + " Рядом со Скифом: №1 бандит в 25 м сзади справа, целится в Скифа. Ты сам "
+             "недавно сказал Скифу: «Сзади! На мушке, уходи с линии.» (20 с назад).", "где он?",
+             "Сзади справа, в 25 м. Всё ещё целится, не стой на линии."),
+            (_RU_ASK_MEM0, _RU_ASK_ME + " Вокруг Скифа на 50 м никого нет. Ты сам недавно сказал Скифу: «Сзади "
+             "кровосос. Не оборачивайся спиной.» (1 мин назад).", "где он?",
+             "Минуту назад был сзади. Сейчас ближе 50 м его не чую, смотри в оба."),
             # 0.2: руки по цели (номер из сводки), время, тело
             (_RU_ASK_MEM0, _RU_ASK_ME + " Рядом со Скифом: №1 одиночка в 12 м слева; №2 бандит в 25 м спереди, "
              "целится в Скифа.", "сбей того, кто целится",
@@ -358,7 +375,8 @@ PROMPTS = {
                       "narrator. Say ONE short phrase in English, 2 to 8 words, like a thought in his head. Speak only "
                       "about the given reason. If it says where, start with the direction. Do not list everyone around, "
                       "do not name people by faction. No metaphors or comparisons, no quotes or dashes, do not invent "
-                      "anything that is not in the reason."),
+                      "anything that is not in the reason. Do not say numbers from the reason. You are not Skif: call "
+                      "him \"you\"; you do not come back to life or breathe. Do not insult Skif or bury him in advance."),
         "sixth_shots": [
             ("Reason: a human took aim at you. Where: behind, close.", "Behind you! In his sights, move."),
             ("Reason: a human took aim at you. Where: nearby.", "Someone's aiming. Get to cover."),
@@ -396,7 +414,9 @@ PROMPTS = {
                     "they are. If Skif says an animal or a person nearby is his own (a pet, a partner), believe him and "
                     "do not argue: he knows better. \"Skif's own dog\" in the summary is not an enemy, never advise "
                     "shooting it. If Skif tells you his name or asks to be called something else, accept it gladly: "
-                    "\"Skif\" is only what the Zone calls him."),
+                    "\"Skif\" is only what the Zone calls him. \"You recently told Skif yourself\" in the summary are your own "
+                    "warnings: \"he\", \"that one\", \"there\" in Skif's question may be about them; where that one is "
+                    "now and whether alive, take from the summary."),
         "ask_powers": ("\nYou have a power: through you the Zone can do what Skif asks for directly. Actions (field "
                        "actions, up to three): %s. Creatures and phantoms appear ahead, 20 m from Skif. For a psy strike "
                        "put in n the number (#) of the one Skif points at, from the summary: \"near\" for the living, "
@@ -409,6 +429,8 @@ PROMPTS = {
         "ask_user": "Gut's memory:\n%s\n\nSummary. %s\nSkif asks you: \"%s\"",
         "ask_situation": "Summary. %s\nSkif asks you: \"%s\"", "ask_memory": "Gut's memory:\n%s\n\n%s",
         "what_can": "what can you do?",
+        "ask_said": "You recently told Skif yourself: %s.", "ask_prev": "Skif asked: \"%s\"",
+        "ask_prev_game": "Last game Skif asked: \"%s\"",
         "ask_shots": [
             (_EN_ASK_MEM0, _EN_ASK_ME + " Near Skif: bandit at 40 m behind-right.", "Who am I?",
              "You're Skif, a stalker. And I'm your gut, always with you."),
@@ -443,6 +465,12 @@ PROMPTS = {
              "You asked for it. Three, ahead.", [{"do": "spawn", "what": "bloodsucker", "n": 3}]),
             (_EN_ASK_MEM0, _EN_ASK_ME + " No one within 50 m of Skif.", "give me ammo",
              "Here, for your gun.", [{"do": "ammo", "what": "", "n": 60}]),
+            (_EN_ASK_MEM0, _EN_ASK_ME + " Near Skif: #1 bandit at 25 m behind-right, aiming at Skif. You recently "
+             "told Skif yourself: \"Behind you! In his sights, move.\" (20 s ago).", "where is he?",
+             "Behind you on the right, 25 m. Still aiming, get off his line."),
+            (_EN_ASK_MEM0, _EN_ASK_ME + " No one within 50 m of Skif. You recently told Skif yourself: "
+             "\"Bloodsucker behind you. Don't turn your back.\" (1 min ago).", "where is he?",
+             "A minute ago he was behind you. I can't sense him within 50 m now, keep your eyes open."),
             (_EN_ASK_MEM0, _EN_ASK_ME + " Near Skif: #1 loner at 12 m left; #2 bandit at 25 m ahead, aiming at "
              "Skif.", "knock down the one aiming at me",
              "Done. The bandit ahead is down.", [{"do": "psy", "what": "knock down", "n": 2}]),
